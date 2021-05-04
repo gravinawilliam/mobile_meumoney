@@ -1,0 +1,20 @@
+include: package:effective_dart/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/app/shared/translation/generated/l10n.dart
+    - lib/app/shared/translation/generated/intl/**
+
+linter:
+  rules:
+    public_member_api_docs: false
+    avoid_function_literals_in_foreach_calls: true
+    omit_local_variable_types: false
+    use_setters_to_change_properties: false
+    avoid_catches_without_on_clauses: false
+    one_member_abstracts: false
+    type_annotate_public_apis: false
+    avoid_relative_lib_imports: true
+    avoid_types_on_closure_parameters: true
+    avoid_void_async: true
+    prefer_expression_function_bodies: true
