@@ -24,6 +24,9 @@ class AppModule extends Module {
       AppRoutersConst.register,
       module: RegisterModule(),
     ),
-    ModuleRoute('/root', module: RootModule()),
+    ModuleRoute(
+      '/root',
+      module: RootModule(),
+    ),
   ];
 }
