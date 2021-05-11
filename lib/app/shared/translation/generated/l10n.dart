@@ -49,6 +49,26 @@ class LocaleProvider {
   static LocaleProvider? maybeOf(BuildContext context) {
     return Localizations.of<LocaleProvider>(context, LocaleProvider);
   }
+
+  /// `Entrar`
+  String get enter {
+    return Intl.message(
+      'Entrar',
+      name: 'enter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get email {
+    return Intl.message(
+      'E-mail',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<LocaleProvider> {

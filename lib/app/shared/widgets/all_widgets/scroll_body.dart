@@ -4,11 +4,13 @@ import '../../../shared/constants/constants.dart';
 class ScrollBody extends StatelessWidget {
   final List<Widget> children;
   final bool hasMargin;
+  final double? width;
   final double paddingRight;
 
   const ScrollBody({
     required this.children,
     this.hasMargin = true,
+    this.width,
     this.paddingRight = 0,
   });
 
@@ -18,7 +20,7 @@ class ScrollBody extends StatelessWidget {
     return SafeArea(
       child: Container(
         height: SizeConst.screenHeight,
-        width: SizeConst.screenWidth,
+        width: width == null ? SizeConst.screenWidth : width,
         margin: EdgeInsets.symmetric(
           horizontal: hasMargin ? SizeConst.paddingHorizontal : 0,
         ),
