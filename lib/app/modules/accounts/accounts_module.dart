@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'accounts_Page.dart';
+import 'accounts_page.dart';
 import 'accounts_store.dart';
 
 class AccountsModule extends Module {

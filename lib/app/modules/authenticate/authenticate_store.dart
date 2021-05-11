@@ -84,7 +84,7 @@ abstract class _AuthenticateStoreBase with Store {
           btnController.success();
           UserModel.user = response.user;
           UserModel.user!.token = response.token;
-          Modular.to.navigate('/root/chat/');
+          Modular.to.navigate('/root/home');
         },
       );
     } catch (e) {
