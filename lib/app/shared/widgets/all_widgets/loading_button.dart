@@ -4,7 +4,7 @@ import 'package:rounded_loading_button/rounded_loading_button.dart';
 import '../../constants/constants.dart';
 
 class LoadingButton extends StatefulWidget {
-  final Function() onPressed;
+  final void Function() onPressed;
   final String title;
   final RoundedLoadingButtonController btnController;
 

@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../constants/all_constants/themes_const.dart' as theme;
+import 'package:mobile_meumoney/app/shared/constants/constants.dart';
 import '../../constants/constants.dart';
 
 class CustomTextFormFields extends StatelessWidget {
-  final String hintText;
+  final String? hintText;
   final TextInputType keyboardType;
+  final String? labelText;
   final bool obscureText;
-  final Function(String) onChanged;
-  final String? errorText;
-  final bool enable;
+  final void Function(String) onChanged;
+  final String errorText;
+  final TextAlign textAlign;
+  final String initialValue;
+  final double hintFontsize;
+  final bool? enable;
+  final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextFormFields({
-    required this.hintText,
-    required this.enable,
+    this.hintText,
+    this.labelText,
+    this.enable,
     this.obscureText = false,
+    this.maxLength,
     this.inputFormatters,
+    this.textAlign = TextAlign.left,
+    this.initialValue = "",
+    this.hintFontsize = 15,
     required this.onChanged,
-    this.errorText,
+    required this.errorText,
     required this.keyboardType,
   });
 
@@ -29,20 +38,25 @@ class CustomTextFormFields extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: SizeConst.paddingVertical * 0.6),
       child: TextFormField(
-        enabled: enable,
-        keyboardType: keyboardType,
-        obscureText: obscureText,
-        inputFormatters: inputFormatters,
-        onChanged: onChanged,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-        ),
-        decoration: theme.authenticateTextFormField.copyWith(
-          hintText: hintText,
-          errorText: errorText,
-        ),
-      ),
+          initialValue: initialValue,
+          textAlign: textAlign,
+          enabled: enable,
+          keyboardType: keyboardType,
+          obscureText: obscureText,
+          inputFormatters: inputFormatters,
+          onChanged: onChanged,
+          maxLength: maxLength,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+          ),
+          decoration: ThemesConst.authenticateTextFormField.copyWith(
+            hintText: hintText,
+            errorText: errorText,
+            hintStyle: TextStyle(
+              fontSize: hintFontsize,
+            ),
+          )),
     );
   }
 }

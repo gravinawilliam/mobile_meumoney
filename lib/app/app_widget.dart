@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'shared/constants/all_constants/themes_const.dart' as theme;
 import 'shared/constants/constants.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'ViwQuestões',
-        theme: theme.dark,
-        initialRoute: AppRoutersConst.authenticate,
+        theme: ThemesConst.dark,
+        initialRoute: AppRoutersConst.authenticateRegister,
         debugShowCheckedModeBanner: false,
         builder: asuka.builder,
         supportedLocales: [

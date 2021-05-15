@@ -1,44 +1,43 @@
-import '../models.dart';
+import 'dart:convert';
 
 class UserModel {
-  String id = '';
-  String name = '';
-  String? cellphone;
-  String email = '';
-  List<BankAccountModel>? bankAccounts;
-  List<UserCoinModel>? userCoins;
-  String? avatarUrl;
-  String? token;
-
+  String id;
+  String name;
+  String email;
   UserModel({
     required this.id,
     required this.name,
-    this.cellphone,
     required this.email,
-    this.bankAccounts,
-    this.userCoins,
-    this.avatarUrl,
   });
 
-  UserModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    cellphone = json['cellphone'];
-    email = json['email'];
-    if (json['bankAccounts'] != null) {
-      bankAccounts = <BankAccountModel>[];
-      json['bankAccounts'].forEach((v) {
-        bankAccounts!.add(BankAccountModel.fromJson(v));
-      });
-    }
-    if (json['userCoins'] != null) {
-      userCoins = <UserCoinModel>[];
-      json['userCoins'].forEach((v) {
-        userCoins!.add(UserCoinModel.fromJson(v));
-      });
-    }
-    avatarUrl = json['avatarUrl'];
-  }
-
   static UserModel? user;
+  static String? token;
+
+  UserModel copyWith({
+    String? id,
+    String? name,
+    String? email,
+  }) =>
+      UserModel(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        email: email ?? this.email,
+      );
+
+  Map<String, dynamic> toMap() => {
+        'id': id,
+        'name': name,
+        'email': email,
+      };
+
+  factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
+        id: map['id'],
+        name: map['name'],
+        email: map['email'],
+      );
+
+  String toJson() => json.encode(toMap());
+
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source));
 }

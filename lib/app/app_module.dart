@@ -1,28 +1,23 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/modules/authenticate_register/repositories/authenticate_repository.dart';
+import 'package:mobile_meumoney/app/modules/root/root_module.dart';
 
-import 'modules/accounts/accounts_store.dart';
-import 'modules/authenticate/authenticate_module.dart';
-import 'modules/home/home_store.dart';
-import 'modules/register/register_module.dart';
-import 'modules/root/root_module.dart';
+import 'modules/authenticate_register/authenticate_register_module.dart';
+import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'shared/constants/constants.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    $HomeStore,
-    $AccountsStore,
+    $AuthenticateRegisterStore,
+    $AuthenticateRepository,
   ];
 
   @override
   final List<ModularRoute> routes = [
     ModuleRoute(
-      AppRoutersConst.authenticate,
-      module: AuthenticateModule(),
-    ),
-    ModuleRoute(
-      AppRoutersConst.register,
-      module: RegisterModule(),
+      AppRoutersConst.loginRegister,
+      module: AuthenticateRegisterModule(),
     ),
     ModuleRoute(
       '/root',
