@@ -10,7 +10,8 @@ import 'widgets/all_wigets/tab_bar_header.dart';
 
 class AuthenticateRegisterPage extends StatefulWidget {
   @override
-  AuthenticateRegisterPageState createState() => AuthenticateRegisterPageState();
+  AuthenticateRegisterPageState createState() =>
+      AuthenticateRegisterPageState();
 }
 
 class AuthenticateRegisterPageState
@@ -23,7 +24,6 @@ class AuthenticateRegisterPageState
         children: [
           HeaderLogo(),
           TabBarHeader(),
-          TabBarContent(),
         ],
       ),
     );

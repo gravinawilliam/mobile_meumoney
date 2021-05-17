@@ -5,11 +5,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+import '../../shared/constants/all_constants/app_routers_const.dart';
 import '../../shared/constants/constants.dart';
 import '../../shared/models/models.dart';
 import 'errors/errors.dart';
 import 'interfaces/authenticate_repository_interface.dart';
 import 'models/create_session_model.dart';
+import 'models/create_user_model.dart';
 import 'models/response_create_session_model.dart';
 
 part 'authenticate_register_store.g.dart';
@@ -32,6 +34,15 @@ abstract class _AuthenticateRegisterStoreBase with Store {
       RoundedLoadingButtonController();
 
   @observable
+  String registerName = '';
+
+  @observable
+  String registerEmail = '';
+
+  @observable
+  String registerPassword = '';
+
+  @observable
   String email = '';
 
   @observable
@@ -43,6 +54,15 @@ abstract class _AuthenticateRegisterStoreBase with Store {
   @action
   void trocaIndexedStack() =>
       indexedStack == 0 ? indexedStack = 1 : indexedStack = 0;
+
+  @action
+  void setRegisterName(String value) => registerName = value;
+
+  @action
+  void setRegisterEmail(String value) => registerEmail = value;
+
+  @action
+  void setRegisterPassword(String value) => registerPassword = value;
 
   @action
   void setEmail(String value) => email = value;
@@ -74,10 +94,58 @@ abstract class _AuthenticateRegisterStoreBase with Store {
   Function? get loginPressed => (isFormValid) ? login : null;
 
   @computed
+  CreateUserModel get registerUserCredential => CreateUserModel(
+        name: registerName,
+        email: registerEmail,
+        password: registerPassword,
+      );
+
+  @computed
   CreateSessionModel get credential => CreateSessionModel(
         email: email,
         password: password,
       );
+
+  @action
+  Future<void> register() async {
+    try {
+      enableTextFormField = false;
+      Either<Failure, UserModel> createUserResponse =
+          await repository.createUser(registerUserCredential);
+      createUserResponse.fold(
+        (failure) {},
+        (response) async {
+          btnController.success();
+          Modular.to.navigate(
+            AppRoutersConst.authenticateRegister,
+          );
+        },
+      );
+    } catch (error) {
+      asuka.showSnackBar(
+        SnackBar(
+          backgroundColor: DarkColorsConst.primary,
+          content: Text(
+            "Erro ao cadastrar",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: DarkColorsConst.textPrimary,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      );
+      btnController.error();
+      await Future.delayed(
+        Duration(
+          milliseconds: 1300,
+        ),
+      );
+      enableTextFormField = true;
+    } finally {
+      btnController.reset();
+    }
+  }
 
   @action
   Future<void> login() async {
@@ -89,12 +157,12 @@ abstract class _AuthenticateRegisterStoreBase with Store {
         (failure) {},
         (response) async {
           btnController.success();
-          //   UserModel.user = response.user;
-          //   UserModel.token = response.token;
+          UserModel.user = response.user;
+          UserModel.token = response.token;
           Modular.to.navigate('/root/home');
         },
       );
-    } catch (e) {
+    } catch (error) {
       asuka.showSnackBar(
         SnackBar(
           backgroundColor: DarkColorsConst.primary,

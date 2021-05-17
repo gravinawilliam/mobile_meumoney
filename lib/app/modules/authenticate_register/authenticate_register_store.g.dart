@@ -47,6 +47,14 @@ mixin _$AuthenticateRegisterStore on _AuthenticateRegisterStoreBase, Store {
       (_$loginPressedComputed ??= Computed<Function?>(() => super.loginPressed,
               name: '_AuthenticateRegisterStoreBase.loginPressed'))
           .value;
+  Computed<CreateUserModel>? _$registerUserCredentialComputed;
+
+  @override
+  CreateUserModel get registerUserCredential =>
+      (_$registerUserCredentialComputed ??= Computed<CreateUserModel>(
+              () => super.registerUserCredential,
+              name: '_AuthenticateRegisterStoreBase.registerUserCredential'))
+          .value;
   Computed<CreateSessionModel>? _$credentialComputed;
 
   @override
@@ -84,6 +92,54 @@ mixin _$AuthenticateRegisterStore on _AuthenticateRegisterStoreBase, Store {
   set btnController(RoundedLoadingButtonController value) {
     _$btnControllerAtom.reportWrite(value, super.btnController, () {
       super.btnController = value;
+    });
+  }
+
+  final _$registerNameAtom =
+      Atom(name: '_AuthenticateRegisterStoreBase.registerName');
+
+  @override
+  String get registerName {
+    _$registerNameAtom.reportRead();
+    return super.registerName;
+  }
+
+  @override
+  set registerName(String value) {
+    _$registerNameAtom.reportWrite(value, super.registerName, () {
+      super.registerName = value;
+    });
+  }
+
+  final _$registerEmailAtom =
+      Atom(name: '_AuthenticateRegisterStoreBase.registerEmail');
+
+  @override
+  String get registerEmail {
+    _$registerEmailAtom.reportRead();
+    return super.registerEmail;
+  }
+
+  @override
+  set registerEmail(String value) {
+    _$registerEmailAtom.reportWrite(value, super.registerEmail, () {
+      super.registerEmail = value;
+    });
+  }
+
+  final _$registerPasswordAtom =
+      Atom(name: '_AuthenticateRegisterStoreBase.registerPassword');
+
+  @override
+  String get registerPassword {
+    _$registerPasswordAtom.reportRead();
+    return super.registerPassword;
+  }
+
+  @override
+  set registerPassword(String value) {
+    _$registerPasswordAtom.reportWrite(value, super.registerPassword, () {
+      super.registerPassword = value;
     });
   }
 
@@ -133,6 +189,14 @@ mixin _$AuthenticateRegisterStore on _AuthenticateRegisterStoreBase, Store {
     });
   }
 
+  final _$registerAsyncAction =
+      AsyncAction('_AuthenticateRegisterStoreBase.register');
+
+  @override
+  Future<void> register() {
+    return _$registerAsyncAction.run(() => super.register());
+  }
+
   final _$loginAsyncAction =
       AsyncAction('_AuthenticateRegisterStoreBase.login');
 
@@ -150,6 +214,40 @@ mixin _$AuthenticateRegisterStore on _AuthenticateRegisterStoreBase, Store {
         .startAction(name: '_AuthenticateRegisterStoreBase.trocaIndexedStack');
     try {
       return super.trocaIndexedStack();
+    } finally {
+      _$_AuthenticateRegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRegisterName(String value) {
+    final _$actionInfo = _$_AuthenticateRegisterStoreBaseActionController
+        .startAction(name: '_AuthenticateRegisterStoreBase.setRegisterName');
+    try {
+      return super.setRegisterName(value);
+    } finally {
+      _$_AuthenticateRegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRegisterEmail(String value) {
+    final _$actionInfo = _$_AuthenticateRegisterStoreBaseActionController
+        .startAction(name: '_AuthenticateRegisterStoreBase.setRegisterEmail');
+    try {
+      return super.setRegisterEmail(value);
+    } finally {
+      _$_AuthenticateRegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRegisterPassword(String value) {
+    final _$actionInfo =
+        _$_AuthenticateRegisterStoreBaseActionController.startAction(
+            name: '_AuthenticateRegisterStoreBase.setRegisterPassword');
+    try {
+      return super.setRegisterPassword(value);
     } finally {
       _$_AuthenticateRegisterStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -182,6 +280,9 @@ mixin _$AuthenticateRegisterStore on _AuthenticateRegisterStoreBase, Store {
     return '''
 indexedStack: ${indexedStack},
 btnController: ${btnController},
+registerName: ${registerName},
+registerEmail: ${registerEmail},
+registerPassword: ${registerPassword},
 email: ${email},
 enableTextFormField: ${enableTextFormField},
 password: ${password},
@@ -189,6 +290,7 @@ emailValid: ${emailValid},
 passwordValid: ${passwordValid},
 isFormValid: ${isFormValid},
 loginPressed: ${loginPressed},
+registerUserCredential: ${registerUserCredential},
 credential: ${credential}
     ''';
   }

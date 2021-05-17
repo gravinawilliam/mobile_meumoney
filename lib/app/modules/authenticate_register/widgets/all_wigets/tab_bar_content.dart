@@ -13,6 +13,7 @@ class TabBarContent extends StatefulWidget {
 
 class _TabBarContentState
     extends ModularState<TabBarContent, AuthenticateRegisterStore> {
+  int indexedStack = 0;
   @override
   Widget build(BuildContext context) => Observer(
         builder: (_) => IndexedStack(

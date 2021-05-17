@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../../shared/constants/constants.dart';
 import '../../../../../shared/widgets/all_widgets/custom_text_form_fields.dart';
 import '../../../../../shared/widgets/all_widgets/loading_button.dart';
 import '../../../authenticate_register_store.dart';
@@ -23,14 +22,14 @@ class _RegisterWidgetState
               errorText: "",
               hintText: "Nome",
               enable: store.enableTextFormField,
-              onChanged: store.setEmail,
-              keyboardType: TextInputType.emailAddress,
+              onChanged: store.setRegisterName,
+              keyboardType: TextInputType.text,
             ),
             CustomTextFormFields(
               errorText: "",
               hintText: "Email",
               enable: store.enableTextFormField,
-              onChanged: store.setEmail,
+              onChanged: store.setRegisterEmail,
               keyboardType: TextInputType.emailAddress,
             ),
             CustomTextFormFields(
@@ -38,12 +37,12 @@ class _RegisterWidgetState
               hintText: "Senha",
               obscureText: true,
               enable: store.enableTextFormField,
-              onChanged: store.setPassword,
+              onChanged: store.setRegisterPassword,
               keyboardType: TextInputType.visiblePassword,
             ),
             LoadingButton(
-              onPressed: () {},
-              title: "Entrar",
+              onPressed: () => store.register(),
+              title: "Cadastrar",
               btnController: store.btnController,
             ),
           ],
