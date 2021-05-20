@@ -1,21 +1,24 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/constants.dart';
 import '../../../models/models.dart';
 
-import 'credit_card_store.dart';
+import 'credit_card_controller.dart';
 
 class CreditCardWidget extends StatefulWidget {
   final BankAccountModel bankAccount;
   final double sizeHeightCard;
   final double sizeWidthCard;
+  final bool valuesVisible;
 
   const CreditCardWidget({
     required this.bankAccount,
     required this.sizeHeightCard,
     required this.sizeWidthCard,
+    this.valuesVisible = true,
   });
 
   @override
@@ -23,20 +26,19 @@ class CreditCardWidget extends StatefulWidget {
 }
 
 class _CreditCardWidgetState
-    extends ModularState<CreditCardWidget, CreditCardStore> {
+    extends ModularState<CreditCardWidget, CreditCardController> {
   @override
   Widget build(BuildContext context) {
     SizeConst().init(context);
-
     return Container(
       padding: EdgeInsets.all(10),
       height: widget.sizeHeightCard,
       width: widget.sizeWidthCard,
       decoration: BoxDecoration(
         color: Color.fromRGBO(
-          widget.bankAccount.bank.redRgbColorCard,
-          widget.bankAccount.bank.greenRgbColorCard,
-          widget.bankAccount.bank.blueRgbColorCard,
+          widget.bankAccount.bank.redColorCard,
+          widget.bankAccount.bank.greenColorCard,
+          widget.bankAccount.bank.blueColorCard,
           1,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -59,21 +61,25 @@ class _CreditCardWidgetState
                 height: 40,
                 width: widget.sizeWidthCard * 0.55,
                 alignment: Alignment.centerRight,
-                child: AutoSizeText(
-                  store.getbalance(
-                    balance: widget.bankAccount.balance,
-                    coin: widget.bankAccount.coin,
+                child: Observer(
+                  builder: (_) => AutoSizeText(
+                    widget.valuesVisible
+                        ? controller.getbalance(
+                            balance: widget.bankAccount.balance,
+                            symbolCoin: widget.bankAccount.symbolCoin,
+                          )
+                        : "XX,XX",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontFamily: FontsConst.regular,
+                      fontSize: 20,
+                      letterSpacing: 1,
+                      color: Colors.white.withOpacity(0.8),
+                    ),
+                    maxFontSize: 20,
+                    minFontSize: 10,
+                    maxLines: 1,
                   ),
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontFamily: FontsConst.regular,
-                    fontSize: 20,
-                    letterSpacing: 1,
-                    color: Colors.white.withOpacity(0.8),
-                  ),
-                  maxFontSize: 20,
-                  minFontSize: 10,
-                  maxLines: 1,
                 ),
               ),
             ],

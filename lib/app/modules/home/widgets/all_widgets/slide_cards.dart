@@ -1,18 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../modules/home/home_store.dart';
-import '../../constants/constants.dart';
-import '../../models/models.dart';
+import '../../../../shared/constants/constants.dart';
+import '../../../../shared/models/models.dart';
+import '../../../../shared/widgets/all_widgets/credit_card/credit_card_widget.dart';
+import '../../home_store.dart';
 
 class SlideCards extends StatefulWidget {
   final List<BankAccountModel> bankAccouts;
   final bool hasMarginTop;
   final bool hasOnTap;
+  final bool valuesVisible;
 
   const SlideCards({
     required this.bankAccouts,
+    this.valuesVisible = true,
     this.hasMarginTop = false,
     this.hasOnTap = true,
   });
@@ -45,10 +49,16 @@ class _SlideCardsState extends ModularState<SlideCards, HomeStore> {
             ),
           ),
           itemCount: widget.bankAccouts.length,
-          itemBuilder: (context, index, i) {
+          itemBuilder: (context, index, int) {
             var bankAccountModel = widget.bankAccouts[index];
-            return GestureDetector(
-              onTap: widget.hasOnTap ? () {} : () {},
+            return Observer(
+              builder: (_) => CreditCardWidget(
+                sizeWidthCard:
+                    SizeConst.screenWidth - (3 * SizeConst.paddingHorizontal),
+                bankAccount: bankAccountModel,
+                sizeHeightCard: sizeHeightCard,
+                valuesVisible: widget.valuesVisible,
+              ),
             );
           },
         ),

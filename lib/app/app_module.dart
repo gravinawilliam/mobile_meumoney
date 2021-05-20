@@ -1,19 +1,27 @@
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/credit_card/credit_card_store.dart';
-import 'package:mobile_meumoney/app/modules/home/home_store.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
+import 'modules/home/home_store.dart';
 import 'modules/root/root_module.dart';
+import 'modules/splash/repositories/splash_repository.dart';
+import 'modules/splash/splash_module.dart';
 import 'shared/constants/constants.dart';
+import 'shared/services/money_service.dart';
+import 'shared/widgets/all_widgets/credit_card/credit_card_controller.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => HomeStore()),
+    $SplashRepository,
+    $HomeStore,
     $AuthenticateRegisterStore,
     $AuthenticateRepository,
+    $CreditCardController,
+    $MoneyService,
+    Bind((i) => Dio()),
   ];
 
   @override
@@ -23,8 +31,12 @@ class AppModule extends Module {
       module: AuthenticateRegisterModule(),
     ),
     ModuleRoute(
-      '/root',
+      AppRoutersConst.root,
       module: RootModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.splash,
+      module: SplashModule(),
     ),
   ];
 }

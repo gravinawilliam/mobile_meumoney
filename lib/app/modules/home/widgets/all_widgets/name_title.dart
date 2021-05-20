@@ -9,6 +9,7 @@ class NameTitle extends StatefulWidget {
   const NameTitle({
     required this.userName,
   });
+
   @override
   _NameTitleState createState() => _NameTitleState();
 }
@@ -18,10 +19,8 @@ class _NameTitleState extends State<NameTitle> {
   Widget build(BuildContext context) {
     SizeConst().init(context);
     return Container(
-      width: SizeConst.screenWidth - (2 * SizeConst.paddingHorizontal),
-      padding: EdgeInsets.only(
-        left: SizeConst.paddingHorizontal * 0.5,
-      ),
+      width: SizeConst.screenWidthWithMargin * 0.7,
+      alignment: Alignment.centerLeft,
       child: Text(
         widget.userName,
         style: TextStyle(

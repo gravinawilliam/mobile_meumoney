@@ -7,6 +7,7 @@ import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../../shared/constants/all_constants/app_routers_const.dart';
 import '../../shared/constants/constants.dart';
+import '../../shared/interfaces/services/user_service_interface.dart';
 import '../../shared/models/models.dart';
 import 'errors/errors.dart';
 import 'interfaces/authenticate_repository_interface.dart';
@@ -22,8 +23,11 @@ class AuthenticateRegisterStore = _AuthenticateRegisterStoreBase
 
 abstract class _AuthenticateRegisterStoreBase with Store {
   final IAuthenticateRepository repository;
+  final IUserService userService;
+
   _AuthenticateRegisterStoreBase(
     this.repository,
+    this.userService,
   );
 
   @observable
@@ -159,6 +163,7 @@ abstract class _AuthenticateRegisterStoreBase with Store {
           btnController.success();
           UserModel.user = response.user;
           UserModel.token = response.token;
+          userService.saveCurrentToken(token: response.token);
           Modular.to.navigate('/root/home');
         },
       );

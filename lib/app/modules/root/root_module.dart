@@ -1,9 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/home/home_module.dart';
-import 'package:mobile_meumoney/app/modules/root/root_page.dart';
-import 'package:mobile_meumoney/app/modules/root/root_page.dart';
-import 'package:mobile_meumoney/app/shared/constants/all_constants/app_routers_const.dart';
-
+import '../../shared/constants/all_constants/app_routers_const.dart';
+import '../accounts/accounts_module.dart';
+import '../home/home_module.dart';
+import 'root_page.dart';
 import 'root_store.dart';
 
 class RootModule extends Module {
@@ -18,11 +17,17 @@ class RootModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => RootPage(),
-    ),
-    ModuleRoute(
-      AppRoutersConst.home,
-      module: HomeModule(),
+      child: (context, args) => RootPage(),
+      children: [
+        ModuleRoute(
+          AppRoutersConst.home,
+          module: HomeModule(),
+        ),
+        ModuleRoute(
+          AppRoutersConst.accounts,
+          module: AccountsModule(),
+        ),
+      ],
     ),
   ];
 }

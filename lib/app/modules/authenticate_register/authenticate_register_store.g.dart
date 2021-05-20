@@ -7,7 +7,8 @@ part of 'authenticate_register_store.dart';
 // **************************************************************************
 
 final $AuthenticateRegisterStore = BindInject(
-  (i) => AuthenticateRegisterStore(i<IAuthenticateRepository>()),
+  (i) => AuthenticateRegisterStore(
+      i<IAuthenticateRepository>(), i<IUserService>()),
   isSingleton: false,
   isLazy: true,
 );

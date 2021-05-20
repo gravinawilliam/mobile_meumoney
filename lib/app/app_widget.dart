@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'ViwQuestões',
         theme: ThemesConst.dark,
-        initialRoute: AppRoutersConst.authenticateRegister,
+        initialRoute: AppRoutersConst.splash,
         debugShowCheckedModeBanner: false,
         builder: asuka.builder,
         supportedLocales: [

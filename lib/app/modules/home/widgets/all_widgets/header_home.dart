@@ -1,10 +1,12 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_meumoney/app/modules/home/widgets/all_widgets/name_title.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../shared/constants/all_constants/size_const.dart';
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
+import '../../home_store.dart';
+import '../home_widgets.dart';
 
 class HeaderHome extends StatefulWidget {
   final UserModel user;
@@ -12,11 +14,12 @@ class HeaderHome extends StatefulWidget {
   const HeaderHome({
     required this.user,
   });
+
   @override
   _HeaderHomeState createState() => _HeaderHomeState();
 }
 
-class _HeaderHomeState extends State<HeaderHome> {
+class _HeaderHomeState extends ModularState<HeaderHome, HomeStore> {
   @override
   Widget build(BuildContext context) {
     SizeConst().init(context);
@@ -31,14 +34,20 @@ class _HeaderHomeState extends State<HeaderHome> {
           NameTitle(
             userName: widget.user.name,
           ),
-          IconButton(
-            highlightColor: Colors.transparent,
-            icon: Icon(
-              EvaIcons.eye,
-              size: 30,
+          Observer(
+            builder: (_) => Container(
+              width: SizeConst.screenWidthWithMargin * 0.3,
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                highlightColor: Colors.transparent,
+                icon: Icon(
+                  store.valuesVisible ? EvaIcons.eye : EvaIcons.eyeOff,
+                  size: 30,
+                ),
+                onPressed: () => store.exchangeVisibility(),
+              ),
             ),
-            onPressed: () {},
-          )
+          ),
         ],
       ),
     );
