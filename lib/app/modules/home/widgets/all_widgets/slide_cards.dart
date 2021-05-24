@@ -29,7 +29,7 @@ class _SlideCardsState extends ModularState<SlideCards, HomeStore> {
   @override
   Widget build(BuildContext context) {
     SizeConst().init(context);
-    var sizeHeightCard = SizeConst.screenHeight * 0.2;
+    var sizeHeightCard = SizeConst.screenWidth * 0.43;
     return Visibility(
       visible: widget.bankAccouts.isNotEmpty,
       child: Container(

@@ -39,6 +39,17 @@ mixin _$RootStore on _RootStoreBase, Store {
   }
 
   @override
+  void showBottomBarOption() {
+    final _$actionInfo = _$_RootStoreBaseActionController.startAction(
+        name: '_RootStoreBase.showBottomBarOption');
+    try {
+      return super.showBottomBarOption();
+    } finally {
+      _$_RootStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 selectedIndex: ${selectedIndex}

@@ -1,25 +1,38 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
 
+import 'modules/accounts/accounts_store.dart';
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
+import 'modules/create_transaction/create_transaction_module.dart';
+import 'modules/create_transaction/create_transaction_store.dart';
+import 'modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content_transaction_store.dart';
 import 'modules/home/home_store.dart';
 import 'modules/root/root_module.dart';
 import 'modules/splash/repositories/splash_repository.dart';
 import 'modules/splash/splash_module.dart';
 import 'shared/constants/constants.dart';
 import 'shared/services/money_service.dart';
+import 'shared/widgets/all_widgets/box_money/box_money_store.dart';
 import 'shared/widgets/all_widgets/credit_card/credit_card_controller.dart';
+import 'shared/widgets/all_widgets/row_box_money/row_box_money_store.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    $ListCategoriesTransactionStore,
+    $TabBarContentTransactionStore,
+    $CreateTransactionStore,
     $SplashRepository,
     $HomeStore,
+    $AccountsStore,
     $AuthenticateRegisterStore,
     $AuthenticateRepository,
     $CreditCardController,
+    $RowBoxMoneyStore,
+    $BoxMoneyStore,
     $MoneyService,
     Bind((i) => Dio()),
   ];
@@ -37,6 +50,10 @@ class AppModule extends Module {
     ModuleRoute(
       AppRoutersConst.splash,
       module: SplashModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.createTransactions,
+      module: CreateTransactionModule(),
     ),
   ];
 }

@@ -7,8 +7,8 @@ class CustomTextFormFields extends StatelessWidget {
   final TextInputType keyboardType;
   final String? labelText;
   final bool obscureText;
-  final void Function(String) onChanged;
-  final String errorText;
+  final void Function(String)? onChanged;
+  final String? errorText;
   final TextAlign textAlign;
   final String initialValue;
   final double hintFontsize;

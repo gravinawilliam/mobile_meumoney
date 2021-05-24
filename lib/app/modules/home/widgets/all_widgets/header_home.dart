@@ -5,8 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
+import '../../../../shared/widgets/all_widgets/subtitle_widget.dart';
 import '../../home_store.dart';
-import '../home_widgets.dart';
 
 class HeaderHome extends StatefulWidget {
   final UserModel user;
@@ -24,28 +24,24 @@ class _HeaderHomeState extends ModularState<HeaderHome, HomeStore> {
   Widget build(BuildContext context) {
     SizeConst().init(context);
     return Container(
-      margin: EdgeInsets.only(
-        bottom: SizeConst.paddingVertical,
-        top: 0.5 * SizeConst.paddingVertical,
+      margin: EdgeInsets.symmetric(
+        horizontal: SizeConst.paddingHorizontal,
+        vertical: SizeConst.paddingVertical,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          NameTitle(
-            userName: widget.user.name,
+          SubtitleWidget(
+            hasMarginHorizontal: false,
+            subTitle: widget.user.name,
           ),
           Observer(
-            builder: (_) => Container(
-              width: SizeConst.screenWidthWithMargin * 0.3,
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                highlightColor: Colors.transparent,
-                icon: Icon(
-                  store.valuesVisible ? EvaIcons.eye : EvaIcons.eyeOff,
-                  size: 30,
-                ),
-                onPressed: () => store.exchangeVisibility(),
+            builder: (_) => IconButton(
+              icon: Icon(
+                store.valuesVisible ? EvaIcons.eye : EvaIcons.eyeOff,
+                size: 30,
               ),
+              onPressed: () => store.exchangeVisibility(),
             ),
           ),
         ],

@@ -15,8 +15,10 @@ class MoneyService implements IMoneyService {
     required double value,
     required String symbolCoin,
   }) {
-    String formatedNumber =
-        NumberFormat.simpleCurrency(name: symbolCoin).format(value);
+    String formatedNumber = NumberFormat.simpleCurrency(
+      name: symbolCoin,
+      locale: symbolCoin == "BRL" ? "pt-br" : "en-us",
+    ).format(value);
     return formatedNumber;
   }
 }

@@ -24,4 +24,7 @@ abstract class _RootStoreBase with Store {
     }
     selectedIndex = index;
   }
+
+  @action
+  void showBottomBarOption() {}
 }
