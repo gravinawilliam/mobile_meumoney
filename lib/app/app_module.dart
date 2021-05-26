@@ -1,13 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
+import 'package:mobile_meumoney/app/modules/account_detail/accountDetail_store.dart';
+import 'package:mobile_meumoney/app/modules/transactions_list/transactions_list_module.dart';
+import 'package:mobile_meumoney/app/modules/transactions_list/transactions_list_store.dart';
 
+import 'modules/account_detail/accountDetail_module.dart';
 import 'modules/accounts/accounts_store.dart';
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
 import 'modules/create_transaction/create_transaction_module.dart';
 import 'modules/create_transaction/create_transaction_store.dart';
+import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content_transaction_store.dart';
 import 'modules/home/home_store.dart';
 import 'modules/root/root_module.dart';
@@ -22,6 +26,8 @@ import 'shared/widgets/all_widgets/row_box_money/row_box_money_store.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    $TransactionsListStore,
+    $AccountDetailStore,
     $ListCategoriesTransactionStore,
     $TabBarContentTransactionStore,
     $CreateTransactionStore,
@@ -54,6 +60,14 @@ class AppModule extends Module {
     ModuleRoute(
       AppRoutersConst.createTransactions,
       module: CreateTransactionModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.accountDetail,
+      module: AccountDetailModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.transactionsList,
+      module: TransactionsListModule(),
     ),
   ];
 }

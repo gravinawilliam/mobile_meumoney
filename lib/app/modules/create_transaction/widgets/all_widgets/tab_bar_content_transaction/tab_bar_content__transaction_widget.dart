@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobile_meumoney/app/modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_widget.dart';
 import 'package:mobile_meumoney/app/shared/constants/constants.dart';
 import 'package:mobile_meumoney/app/shared/widgets/all_widgets/custom_text_form_fields.dart';
+import 'package:mobile_meumoney/app/shared/widgets/all_widgets/loading_button.dart';
 
 import '../../../../../shared/widgets/widgets_globais.dart';
 import '../../../../home/widgets/home_widgets.dart';
@@ -72,6 +73,16 @@ class _TabBarContentTransactionWidgetState extends ModularState<
             ),
           ),
           ListCategoriesTransactionWidget(),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: SizeConst.paddingHorizontal,
+            ),
+            child: LoadingButton(
+              onPressed: () {},
+              title: "Criar transação",
+              btnController: store.buttonController,
+            ),
+          ),
         ],
       ),
     );

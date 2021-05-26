@@ -35,10 +35,27 @@ mixin _$TabBarContentTransactionStore
     });
   }
 
+  final _$buttonControllerAtom =
+      Atom(name: '_TabBarContentTransactionStoreBase.buttonController');
+
+  @override
+  RoundedLoadingButtonController get buttonController {
+    _$buttonControllerAtom.reportRead();
+    return super.buttonController;
+  }
+
+  @override
+  set buttonController(RoundedLoadingButtonController value) {
+    _$buttonControllerAtom.reportWrite(value, super.buttonController, () {
+      super.buttonController = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-user: ${user}
+user: ${user},
+buttonController: ${buttonController}
     ''';
   }
 }

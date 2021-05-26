@@ -30,39 +30,62 @@ class _SlideCardsState extends ModularState<SlideCards, HomeStore> {
   Widget build(BuildContext context) {
     SizeConst().init(context);
     var sizeHeightCard = SizeConst.screenWidth * 0.43;
+    var bankAccountModel = widget.bankAccouts[0];
     return Visibility(
       visible: widget.bankAccouts.isNotEmpty,
-      child: Container(
-        height: sizeHeightCard,
-        margin: EdgeInsets.only(
-          top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
-        ),
-        child: CarouselSlider.builder(
-          options: CarouselOptions(
-            height: SizeConst.screenHeight,
-            initialPage: 0,
-            enableInfiniteScroll: true,
-            enlargeCenterPage: true,
-            scrollDirection: Axis.horizontal,
-            onPageChanged: (index, reason) => controller.changedCard(
-              index: index,
-            ),
-          ),
-          itemCount: widget.bankAccouts.length,
-          itemBuilder: (context, index, int) {
-            var bankAccountModel = widget.bankAccouts[index];
-            return Observer(
-              builder: (_) => CreditCardWidget(
-                sizeWidthCard:
-                    SizeConst.screenWidth - (3 * SizeConst.paddingHorizontal),
-                bankAccount: bankAccountModel,
-                sizeHeightCard: sizeHeightCard,
-                valuesVisible: widget.valuesVisible,
+      child: widget.bankAccouts.length == 1
+          ? Container(
+              alignment: Alignment.center,
+              height: sizeHeightCard,
+              margin: EdgeInsets.only(
+                top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
               ),
-            );
-          },
-        ),
-      ),
+              child: Observer(
+                builder: (_) => CreditCardWidget(
+                  sizeWidthCard:
+                      SizeConst.screenWidth - (3 * SizeConst.paddingHorizontal),
+                  bankAccount: bankAccountModel,
+                  sizeHeightCard: sizeHeightCard,
+                  valuesVisible: widget.valuesVisible,
+                ),
+              ),
+            )
+          : Container(
+              height: sizeHeightCard,
+              margin: EdgeInsets.only(
+                top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
+              ),
+              child: CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: SizeConst.screenHeight,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                  onPageChanged: (index, reason) => controller.changedCard(
+                    index: index,
+                  ),
+                ),
+                itemCount: widget.bankAccouts.length,
+                itemBuilder: (context, index, int) {
+                  var bankAccountModel = widget.bankAccouts[index];
+                  return Observer(
+                    builder: (_) => GestureDetector(
+                      onTap: () => Modular.to.pushNamed(
+                        AppRoutersConst.accountDetail,
+                      ),
+                      child: CreditCardWidget(
+                        sizeWidthCard: SizeConst.screenWidth -
+                            (3 * SizeConst.paddingHorizontal),
+                        bankAccount: bankAccountModel,
+                        sizeHeightCard: sizeHeightCard,
+                        valuesVisible: widget.valuesVisible,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
     );
   }
 }

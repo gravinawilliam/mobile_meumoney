@@ -34,6 +34,8 @@ class _HeaderHomeState extends ModularState<HeaderHome, HomeStore> {
           SubtitleWidget(
             hasMarginHorizontal: false,
             subTitle: widget.user.name,
+            fontFamily: FontsConst.bold,
+            fontSize: 18,
           ),
           Observer(
             builder: (_) => IconButton(

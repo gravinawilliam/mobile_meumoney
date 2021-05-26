@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobile_meumoney/app/shared/models/models.dart';
@@ -30,16 +31,18 @@ class _RowBoxMoneyState extends ModularState<RowBoxMoney, RowBoxMoneyStore> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         BoxMoneyWidget(
+          icon: EvaIcons.arrowIosUpward,
           title: "Ganhos",
           symbolCoin: widget.symbolCoin,
           value: store.earningsAmount,
-          color: DarkColorsConst.ganhosGerais,
+          color: DarkColorsConst.ganhos,
         ),
         BoxMoneyWidget(
+          icon: EvaIcons.arrowIosDownward,
           title: "Despesas",
           symbolCoin: widget.symbolCoin,
           value: store.expenseAmount,
-          color: DarkColorsConst.despesasGerais,
+          color: DarkColorsConst.despesas,
         ),
       ],
     );

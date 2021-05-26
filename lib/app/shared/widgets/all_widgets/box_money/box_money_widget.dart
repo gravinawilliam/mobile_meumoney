@@ -1,4 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:eva_icons_flutter/icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobile_meumoney/app/shared/models/models.dart';
@@ -11,12 +13,14 @@ class BoxMoneyWidget extends StatefulWidget {
   final String title;
   final double value;
   final String symbolCoin;
+  final IconData icon;
 
   const BoxMoneyWidget({
     required this.color,
     required this.title,
     required this.value,
     required this.symbolCoin,
+    required this.icon,
   });
   @override
   _BoxMoneyWidgetState createState() => _BoxMoneyWidgetState();
@@ -37,12 +41,25 @@ class _BoxMoneyWidgetState extends ModularState<BoxMoneyWidget, BoxMoneyStore> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            widget.title,
-            style: TextStyle(
-              fontSize: 12,
-              color: DarkColorsConst.textSecundary,
-              fontFamily: FontsConst.regular,
+          Container(
+            padding: EdgeInsets.only(
+              left: SizeConst.screenWidth * 0.04,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  widget.icon,
+                ),
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: DarkColorsConst.textSecundary,
+                    fontFamily: FontsConst.regular,
+                  ),
+                ),
+              ],
             ),
           ),
           AutoSizeText(

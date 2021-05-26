@@ -68,7 +68,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             child: Column(
               children: [
                 SubtitleWidget(
-                  subTitle: "Fevereiro de 2021",
+                  hasMarginHorizontal: false,
+                  alignment: Alignment.topLeft,
+                  subTitle: "Maio de 2021",
                 ),
                 RowBoxMoney(
                   symbolCoin: "BRL",
@@ -122,13 +124,39 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               ],
             ),
           ),
-          SubtitleWidget(
-            subTitle: "Câmbios",
-            alignment: Alignment.topLeft,
-          ),
-          SubtitleWidget(
-            subTitle: "Transações",
-            alignment: Alignment.topLeft,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SubtitleWidget(
+                subTitle: "Transações",
+                alignment: Alignment.topLeft,
+              ),
+              GestureDetector(
+                onTap: () => Modular.to.pushNamed(
+                  AppRoutersConst.transactionsList,
+                ),
+                child: Container(
+                  margin: EdgeInsets.only(
+                    right: SizeConst.paddingHorizontal,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                      color: DarkColorsConst.primary,
+                      width: 1,
+                    )),
+                  ),
+                  child: SubtitleWidget(
+                    subTitle: "ver mais",
+                    alignment: Alignment.topLeft,
+                    fontSize: 12,
+                    color: DarkColorsConst.primary,
+                    hasMarginVertical: false,
+                    hasMarginHorizontal: false,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
