@@ -69,8 +69,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               children: [
                 SubtitleWidget(
                   hasMarginHorizontal: false,
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.center,
                   subTitle: "Maio de 2021",
+                  fontSize: 16,
                 ),
                 RowBoxMoney(
                   symbolCoin: "BRL",
@@ -124,39 +125,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SubtitleWidget(
-                subTitle: "Transações",
-                alignment: Alignment.topLeft,
-              ),
-              GestureDetector(
-                onTap: () => Modular.to.pushNamed(
-                  AppRoutersConst.transactionsList,
-                ),
-                child: Container(
-                  margin: EdgeInsets.only(
-                    right: SizeConst.paddingHorizontal,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                      color: DarkColorsConst.primary,
-                      width: 1,
-                    )),
-                  ),
-                  child: SubtitleWidget(
-                    subTitle: "ver mais",
-                    alignment: Alignment.topLeft,
-                    fontSize: 12,
-                    color: DarkColorsConst.primary,
-                    hasMarginVertical: false,
-                    hasMarginHorizontal: false,
-                  ),
-                ),
-              ),
-            ],
+          SubtitleWidget(
+            subTitle: "Transações",
+            alignment: Alignment.topLeft,
           ),
         ],
       ),

@@ -10,15 +10,15 @@ abstract class _RootStoreBase with Store {
 
   @action
   void changePage(int index) {
-    //  /root/call/    Caso o Modular.to.path Terminar com / vc tem que utilizar ../chat caso nao voce pode utilizar ./chat
-    print(Modular.to.path);
-
     switch (index) {
       case 0:
         Modular.to.navigate('../home');
         break;
       case 1:
         Modular.to.navigate('../accounts');
+        break;
+      case 2:
+        Modular.to.navigate('../transactionsList');
         break;
       default:
     }

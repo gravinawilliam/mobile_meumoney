@@ -20,7 +20,7 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
     SizeConst().init(context);
     return Scaffold(
       body: RouterOutlet(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         backgroundColor: DarkColorsConst.primary,
         onPressed: () => showAdaptiveActionSheet(
@@ -86,9 +86,12 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
             controller.selectedIndex != 1
                 ? EvaIcons.creditCardOutline
                 : EvaIcons.creditCard,
+            controller.selectedIndex != 2
+                ? EvaIcons.listOutline
+                : EvaIcons.list,
           ],
           activeIndex: store.selectedIndex,
-          gapLocation: GapLocation.center,
+          gapLocation: GapLocation.end,
           gapWidth: 0,
           notchSmoothness: NotchSmoothness.sharpEdge,
           onTap: (index) => controller.changePage(index),

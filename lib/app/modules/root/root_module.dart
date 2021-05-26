@@ -2,8 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../shared/constants/all_constants/app_routers_const.dart';
 import '../accounts/accounts_module.dart';
-
 import '../home/home_module.dart';
+import '../transactions/transactions_module.dart';
 import 'root_page.dart';
 import 'root_store.dart';
 
@@ -28,6 +28,10 @@ class RootModule extends Module {
         ModuleRoute(
           AppRoutersConst.accounts,
           module: AccountsModule(),
+        ),
+        ModuleRoute(
+          AppRoutersConst.transactionsList,
+          module: TransactionsModule(),
         ),
       ],
     ),

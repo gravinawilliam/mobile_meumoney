@@ -34,33 +34,29 @@ class _BoxMoneyWidgetState extends ModularState<BoxMoneyWidget, BoxMoneyStore> {
       height: SizeConst.screenHeight / 10,
       width: SizeConst.screenWidth / 2.5,
       decoration: BoxDecoration(
-          color: widget.color,
-          borderRadius: BorderRadius.circular(
-            SizeConst.paddingHorizontal * 0.5,
-          )),
+        color: widget.color,
+        borderRadius: BorderRadius.circular(
+          SizeConst.paddingHorizontal * 0.5,
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              left: SizeConst.screenWidth * 0.04,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  widget.icon,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                widget.icon,
+              ),
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: DarkColorsConst.textSecundary,
+                  fontFamily: FontsConst.regular,
                 ),
-                Text(
-                  widget.title,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: DarkColorsConst.textSecundary,
-                    fontFamily: FontsConst.regular,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           AutoSizeText(
             controller.getbalance(

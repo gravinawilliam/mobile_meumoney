@@ -10,6 +10,7 @@ class SubtitleWidget extends StatelessWidget {
   final Alignment alignment;
   final bool hasMarginHorizontal;
   final bool hasMarginVertical;
+
   const SubtitleWidget({
     required this.subTitle,
     this.alignment = Alignment.center,
@@ -19,6 +20,7 @@ class SubtitleWidget extends StatelessWidget {
     this.fontSize = 14,
     this.color = DarkColorsConst.textSecundary,
   });
+
   @override
   Widget build(BuildContext context) => Container(
         margin: EdgeInsets.symmetric(
