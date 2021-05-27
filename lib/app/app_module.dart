@@ -5,6 +5,8 @@ import 'modules/accounts/accounts_store.dart';
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
+import 'modules/create_edit_bank_account/create_edit_bank_account_module.dart';
+import 'modules/create_edit_bank_account/create_edit_bank_account_store.dart';
 import 'modules/create_transaction/create_transaction_module.dart';
 import 'modules/create_transaction/create_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
@@ -22,6 +24,7 @@ import 'shared/widgets/all_widgets/row_box_money/row_box_money_store.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    $CreateEditBankAccountStore,
     $ListCategoriesTransactionStore,
     $TabBarContentTransactionStore,
     $CreateTransactionStore,
@@ -54,6 +57,10 @@ class AppModule extends Module {
     ModuleRoute(
       AppRoutersConst.createTransactions,
       module: CreateTransactionModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.createEditBankAccount,
+      module: CreateEditBankAccountModule(),
     ),
   ];
 }

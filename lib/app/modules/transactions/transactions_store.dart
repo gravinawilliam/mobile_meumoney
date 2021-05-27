@@ -6,4 +6,7 @@ part 'transactions_store.g.dart';
 @Injectable(singleton: false)
 class TransactionsStore = _TransactionsStoreBase with _$TransactionsStore;
 
-abstract class _TransactionsStoreBase with Store {}
+abstract class _TransactionsStoreBase with Store {
+  @observable
+  DateTime selectedDay = DateTime.now();
+}

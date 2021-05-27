@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/modules/create_edit_bank_account/create_edit_bank_account_module.dart';
 
 import '../../shared/constants/all_constants/app_routers_const.dart';
 import '../accounts/accounts_module.dart';
@@ -32,6 +33,10 @@ class RootModule extends Module {
         ModuleRoute(
           AppRoutersConst.transactionsList,
           module: TransactionsModule(),
+        ),
+        ModuleRoute(
+          AppRoutersConst.createEditBankAccount,
+          module: CreateEditBankAccountModule(),
         ),
       ],
     ),

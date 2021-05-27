@@ -45,7 +45,9 @@ class TransactionItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              StatusTransactionItem(),
+              StatusTransactionItem(
+                transaction: transaction,
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,

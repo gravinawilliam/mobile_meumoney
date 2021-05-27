@@ -64,7 +64,9 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
                   fontSize: 15,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () => Modular.to.pushNamed(
+                AppRoutersConst.createEditBankAccount,
+              ),
             ),
           ],
           cancelAction: CancelAction(

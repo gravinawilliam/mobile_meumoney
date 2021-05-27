@@ -18,34 +18,37 @@ class AccountsPageState extends ModularState<AccountsPage, AccountsStore> {
   Widget build(BuildContext context) {
     SizeConst().init(context);
     return Scaffold(
-        body: ScrollBody(
-      hasMargin: false,
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: SizeConst.paddingHorizontal,
-            vertical: SizeConst.paddingVertical,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SubtitleWidget(
-                hasMarginHorizontal: false,
-                subTitle: "Contas",
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  EvaIcons.plusSquareOutline,
+      body: ScrollBody(
+        hasMargin: false,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConst.paddingHorizontal,
+              vertical: SizeConst.paddingVertical,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SubtitleWidget(
+                  hasMarginHorizontal: false,
+                  subTitle: "Contas",
                 ),
-              ),
-            ],
+                IconButton(
+                  onPressed: () => Modular.to.pushNamed(
+                    AppRoutersConst.createEditBankAccount,
+                  ),
+                  icon: Icon(
+                    EvaIcons.plusSquareOutline,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        SlideCards(
-          bankAccouts: store.user.bankAccounts,
-        ),
-      ],
-    ));
+          SlideCards(
+            bankAccouts: store.user.bankAccounts,
+          ),
+        ],
+      ),
+    );
   }
 }
