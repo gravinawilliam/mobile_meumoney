@@ -34,10 +34,51 @@ mixin _$TransactionsStore on _TransactionsStoreBase, Store {
     });
   }
 
+  final _$focusedDayAtom = Atom(name: '_TransactionsStoreBase.focusedDay');
+
+  @override
+  DateTime get focusedDay {
+    _$focusedDayAtom.reportRead();
+    return super.focusedDay;
+  }
+
+  @override
+  set focusedDay(DateTime value) {
+    _$focusedDayAtom.reportWrite(value, super.focusedDay, () {
+      super.focusedDay = value;
+    });
+  }
+
+  final _$_TransactionsStoreBaseActionController =
+      ActionController(name: '_TransactionsStoreBase');
+
+  @override
+  void onDaySelected(dynamic _selectedDay, dynamic _focusedDay) {
+    final _$actionInfo = _$_TransactionsStoreBaseActionController.startAction(
+        name: '_TransactionsStoreBase.onDaySelected');
+    try {
+      return super.onDaySelected(_selectedDay, _focusedDay);
+    } finally {
+      _$_TransactionsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool selectedDayPredicate(dynamic date) {
+    final _$actionInfo = _$_TransactionsStoreBaseActionController.startAction(
+        name: '_TransactionsStoreBase.selectedDayPredicate');
+    try {
+      return super.selectedDayPredicate(date);
+    } finally {
+      _$_TransactionsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-selectedDay: ${selectedDay}
+selectedDay: ${selectedDay},
+focusedDay: ${focusedDay}
     ''';
   }
 }

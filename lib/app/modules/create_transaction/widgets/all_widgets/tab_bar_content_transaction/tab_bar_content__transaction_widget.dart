@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_widget.dart';
-import 'package:mobile_meumoney/app/shared/constants/constants.dart';
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/custom_text_form_fields.dart';
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/loading_button.dart';
 
+import '../../../../../shared/constants/constants.dart';
 import '../../../../../shared/widgets/widgets_globais.dart';
-import '../../../../home/widgets/home_widgets.dart';
+import '../../widgets_create_transaction.dart';
 import 'tab_bar_content_transaction_store.dart';
 
 class TabBarContentTransactionWidget extends StatefulWidget {
@@ -28,7 +25,7 @@ class _TabBarContentTransactionWidgetState extends ModularState<
             padding: EdgeInsets.symmetric(
               vertical: SizeConst.paddingVertical,
             ),
-            child: SlideCards(
+            child: SlideCardsWidget(
               bankAccouts: store.user.bankAccounts,
             ),
           ),

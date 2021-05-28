@@ -5,7 +5,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../shared/constants/constants.dart';
 import '../../shared/widgets/all_widgets/subtitle_widget.dart';
 import '../../shared/widgets/widgets_globais.dart';
-import '../home/widgets/home_widgets.dart';
 import 'accounts_store.dart';
 
 class AccountsPage extends StatefulWidget {
@@ -44,7 +43,7 @@ class AccountsPageState extends ModularState<AccountsPage, AccountsStore> {
               ],
             ),
           ),
-          SlideCards(
+          SlideCardsWidget(
             bankAccouts: store.user.bankAccounts,
           ),
         ],

@@ -56,7 +56,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 ),
               ),
               Observer(
-                builder: (_) => SlideCards(
+                builder: (_) => SlideCardsWidget(
                   valuesVisible: store.valuesVisible,
                   bankAccouts: store.user.bankAccounts,
                 ),

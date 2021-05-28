@@ -3,29 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../shared/constants/constants.dart';
-import '../../../../shared/models/models.dart';
-import '../../../../shared/widgets/all_widgets/credit_card/credit_card_widget.dart';
-import '../../home_store.dart';
+import '../../../constants/constants.dart';
+import '../../../models/models.dart';
+import '../../widgets_globais.dart';
+import 'slide_cards_store.dart';
 
-class SlideCards extends StatefulWidget {
+class SlideCardsWidget extends StatefulWidget {
   final List<BankAccountModel> bankAccouts;
   final bool hasMarginTop;
   final bool hasOnTap;
   final bool valuesVisible;
 
-  const SlideCards({
+  const SlideCardsWidget({
     required this.bankAccouts,
-    this.valuesVisible = true,
     this.hasMarginTop = false,
-    this.hasOnTap = true,
+    this.hasOnTap = false,
+    this.valuesVisible = true,
   });
 
   @override
-  _SlideCardsState createState() => _SlideCardsState();
+  _SlideCardsWidgetState createState() => _SlideCardsWidgetState();
 }
 
-class _SlideCardsState extends ModularState<SlideCards, HomeStore> {
+class _SlideCardsWidgetState
+    extends ModularState<SlideCardsWidget, SlideCardsStore> {
   @override
   Widget build(BuildContext context) {
     SizeConst().init(context);
@@ -62,7 +63,7 @@ class _SlideCardsState extends ModularState<SlideCards, HomeStore> {
                   enableInfiniteScroll: true,
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
-                  onPageChanged: (index, reason) => controller.changedCard(
+                  onPageChanged: (index, reason) => store.changedCard(
                     index: index,
                   ),
                 ),

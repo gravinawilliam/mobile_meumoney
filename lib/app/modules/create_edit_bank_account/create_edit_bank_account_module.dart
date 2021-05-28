@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/create_edit_bank_account/create_edit_bank_account_page.dart';
-import 'package:mobile_meumoney/app/modules/create_edit_bank_account/create_edit_bank_account_store.dart';
-import 'package:mobile_meumoney/app/shared/constants/constants.dart';
+
+import 'create_edit_bank_account_page.dart';
+import 'create_edit_bank_account_store.dart';
 
 class CreateEditBankAccountModule extends Module {
   @override

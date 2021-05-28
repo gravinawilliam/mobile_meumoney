@@ -27,6 +27,7 @@ class SplashRepository implements ISplashRepository {
       var result = UserModel.fromMap(response.data);
       return Right(result);
     } on DioError catch (error) {
+      print(error);
       return Left(
         FailureGetUser(
           message: error.response!.data,

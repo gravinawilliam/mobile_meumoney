@@ -20,6 +20,7 @@ import 'shared/services/money_service.dart';
 import 'shared/widgets/all_widgets/box_money/box_money_store.dart';
 import 'shared/widgets/all_widgets/credit_card/credit_card_controller.dart';
 import 'shared/widgets/all_widgets/row_box_money/row_box_money_store.dart';
+import 'shared/widgets/all_widgets/slide_cards/slide_cards_store.dart';
 
 class AppModule extends Module {
   @override
@@ -37,6 +38,7 @@ class AppModule extends Module {
     $RowBoxMoneyStore,
     $BoxMoneyStore,
     $MoneyService,
+    $SlideCardsStore,
     Bind((i) => Dio()),
   ];
 

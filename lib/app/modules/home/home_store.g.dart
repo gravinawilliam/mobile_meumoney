@@ -34,22 +34,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  final _$currentIndexSliderAtom =
-      Atom(name: '_HomeStoreBase.currentIndexSlider');
-
-  @override
-  int get currentIndexSlider {
-    _$currentIndexSliderAtom.reportRead();
-    return super.currentIndexSlider;
-  }
-
-  @override
-  set currentIndexSlider(int value) {
-    _$currentIndexSliderAtom.reportWrite(value, super.currentIndexSlider, () {
-      super.currentIndexSlider = value;
-    });
-  }
-
   final _$valuesVisibleAtom = Atom(name: '_HomeStoreBase.valuesVisible');
 
   @override
@@ -69,17 +53,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
       ActionController(name: '_HomeStoreBase');
 
   @override
-  void changedCard({required int index}) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.changedCard');
-    try {
-      return super.changedCard(index: index);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void exchangeVisibility() {
     final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
         name: '_HomeStoreBase.exchangeVisibility');
@@ -94,7 +67,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   String toString() {
     return '''
 user: ${user},
-currentIndexSlider: ${currentIndexSlider},
 valuesVisible: ${valuesVisible}
     ''';
   }

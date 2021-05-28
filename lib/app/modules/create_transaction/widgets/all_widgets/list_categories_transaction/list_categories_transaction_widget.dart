@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../shared/constants/constants.dart';
-import '../../../../../shared/widgets/all_widgets/subtitle_widget.dart';
+import '../../../../../shared/widgets/widgets_globais.dart';
 import 'list_categories_transaction_store.dart';
 
 class ListCategoriesTransactionWidget extends StatefulWidget {
@@ -15,6 +15,7 @@ class _ListCategoriesTransactionWidgetState extends ModularState<
     ListCategoriesTransactionWidget, ListCategoriesTransactionStore> {
   @override
   Widget build(BuildContext context) {
+    SizeConst().init(context);
     return Container(
       margin: EdgeInsets.only(
         top: SizeConst.paddingVertical,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_meumoney/app/modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content__transaction_widget.dart';
-import 'package:mobile_meumoney/app/shared/constants/all_constants/colors_const.dart';
-import 'package:mobile_meumoney/app/shared/constants/constants.dart';
+
+import '../../shared/constants/constants.dart';
+import 'widgets/all_widgets/tab_bar_content_transaction/tab_bar_content__transaction_widget.dart';
 
 class CreateTransactionPage extends StatefulWidget {
   @override
@@ -11,6 +11,7 @@ class CreateTransactionPage extends StatefulWidget {
 class _CreateTransactionPageState extends State<CreateTransactionPage> {
   @override
   Widget build(BuildContext context) {
+    SizeConst().init(context);
     return DefaultTabController(
       length: 2,
       child: Scaffold(

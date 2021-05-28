@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_meumoney/app/shared/constants/constants.dart';
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/subtitle_widget.dart';
-import 'package:mobile_meumoney/app/shared/widgets/widgets_globais.dart';
+
+import '../../constants/constants.dart';
 
 class WeekDayWidget extends StatefulWidget {
   @override
@@ -11,6 +10,7 @@ class WeekDayWidget extends StatefulWidget {
 class _WeekDayWidgetState extends State<WeekDayWidget> {
   @override
   Widget build(BuildContext context) {
+    SizeConst().init(context);
     return Container(
       decoration: BoxDecoration(
         color: DarkColorsConst.primary,

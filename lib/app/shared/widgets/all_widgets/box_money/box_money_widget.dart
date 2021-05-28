@@ -1,9 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:eva_icons_flutter/icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/models.dart';
 
 import '../../../constants/constants.dart';
 import 'box_money_store.dart';

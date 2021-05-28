@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/all_models/user_model.dart';
-import 'package:mobile_meumoney/app/shared/models/models.dart';
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/credit_card/credit_card_widget.dart';
-import 'package:mobile_meumoney/app/shared/widgets/all_widgets/scroll_body.dart';
+
+import '../../shared/constants/constants.dart';
+import '../../shared/models/models.dart';
+import '../../shared/widgets/widgets_globais.dart';
 
 class CreateEditBankAccountPage extends StatefulWidget {
   final BankAccountModel? bankAccount;
@@ -20,6 +19,7 @@ class CreateEditBankAccountPage extends StatefulWidget {
 class _CreateEditBankAccountPageState extends State<CreateEditBankAccountPage> {
   @override
   Widget build(BuildContext context) {
+    SizeConst().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(

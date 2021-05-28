@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../interfaces/services/money_service_interface.dart';
-import '../../../models/models.dart';
 
 part 'box_money_store.g.dart';
 

@@ -21,7 +21,5 @@ abstract class _TransactionsStoreBase with Store {
   }
 
   @action
-  bool selectedDayPredicate(date) {
-    return isSameDay(selectedDay, date);
-  }
+  bool selectedDayPredicate(date) => isSameDay(selectedDay, date);
 }

@@ -45,7 +45,7 @@ abstract class _SplashStoreBase with Store {
         },
       );
     } catch (error) {
-      Modular.to.navigate(AppRoutersConst.authenticateRegister);
+      Modular.to.pushReplacementNamed(AppRoutersConst.authenticateRegister);
     }
   }
 }

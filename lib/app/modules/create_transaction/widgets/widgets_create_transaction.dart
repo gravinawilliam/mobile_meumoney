@@ -1,0 +1,2 @@
+export 'all_widgets/list_categories_transaction/list_categories_transaction_widget.dart';
+export 'all_widgets/tab_bar_content_transaction/tab_bar_content__transaction_widget.dart';

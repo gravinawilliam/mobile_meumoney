@@ -13,13 +13,7 @@ abstract class _HomeStoreBase with Store {
   UserModel user = UserModel.user!;
 
   @observable
-  int currentIndexSlider = 0;
-
-  @observable
   bool valuesVisible = true;
-
-  @action
-  void changedCard({required int index}) => currentIndexSlider = index;
 
   @action
   void exchangeVisibility() => valuesVisible = !valuesVisible;

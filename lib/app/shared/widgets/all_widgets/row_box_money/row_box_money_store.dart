@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/models.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../../models/models.dart';
+
 part 'row_box_money_store.g.dart';
 
 @Injectable(singleton: false)
