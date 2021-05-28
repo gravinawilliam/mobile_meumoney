@@ -7,7 +7,7 @@ part of 'transactions_store.dart';
 // **************************************************************************
 
 final $TransactionsStore = BindInject(
-  (i) => TransactionsStore(),
+  (i) => TransactionsStore(i<ITransactionsRepository>()),
   isSingleton: false,
   isLazy: true,
 );
@@ -19,6 +19,22 @@ final $TransactionsStore = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$TransactionsStore on _TransactionsStoreBase, Store {
+  final _$transactionsListAtom =
+      Atom(name: '_TransactionsStoreBase.transactionsList');
+
+  @override
+  List<TransactionModel>? get transactionsList {
+    _$transactionsListAtom.reportRead();
+    return super.transactionsList;
+  }
+
+  @override
+  set transactionsList(List<TransactionModel>? value) {
+    _$transactionsListAtom.reportWrite(value, super.transactionsList, () {
+      super.transactionsList = value;
+    });
+  }
+
   final _$selectedDayAtom = Atom(name: '_TransactionsStoreBase.selectedDay');
 
   @override
@@ -49,6 +65,15 @@ mixin _$TransactionsStore on _TransactionsStoreBase, Store {
     });
   }
 
+  final _$getTransactionsAsyncAction =
+      AsyncAction('_TransactionsStoreBase.getTransactions');
+
+  @override
+  Future getTransactions({required String date}) {
+    return _$getTransactionsAsyncAction
+        .run(() => super.getTransactions(date: date));
+  }
+
   final _$_TransactionsStoreBaseActionController =
       ActionController(name: '_TransactionsStoreBase');
 
@@ -77,6 +102,7 @@ mixin _$TransactionsStore on _TransactionsStoreBase, Store {
   @override
   String toString() {
     return '''
+transactionsList: ${transactionsList},
 selectedDay: ${selectedDay},
 focusedDay: ${focusedDay}
     ''';

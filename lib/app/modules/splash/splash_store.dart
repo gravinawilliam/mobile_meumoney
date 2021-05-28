@@ -34,13 +34,14 @@ abstract class _SplashStoreBase with Store {
 
   @action
   Future<void> getUserApi({required String token}) async {
-    Either<FailureGetUser, UserModel> getUserResponse =
+    Either<FailureDio, UserModel> getUserResponse =
         await splashRepository.getUserApi(token: token);
     try {
       getUserResponse.fold(
         (failure) {},
         (response) async {
           UserModel.user = response;
+          UserModel.token = token;
           Modular.to.navigate('/root/home');
         },
       );

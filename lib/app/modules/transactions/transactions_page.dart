@@ -29,6 +29,7 @@ class TransactionsPageState
             Container(
               color: DarkColorsConst.accent,
               child: TableCalendar(
+                startingDayOfWeek: StartingDayOfWeek.sunday,
                 locale: "PT-BR",
                 headerStyle: HeaderStyle(
                   titleCentered: true,
@@ -69,54 +70,19 @@ class TransactionsPageState
               scrollDirection: Axis.vertical,
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index) => Slidable(
-                actionPane: SlidableDrawerActionPane(),
-                actionExtentRatio: 0.25,
-                child: TransactionItem(
-                  length: 10 - 1,
+              itemCount: store.transactionsList == null
+                  ? 0
+                  : store.transactionsList!.length,
+              itemBuilder: (context, index) {
+                var transaction = store.transactionsList![index];
+                return TransactionItem(
+                  length: store.transactionsList == null
+                      ? 0
+                      : store.transactionsList!.length,
                   index: index,
-                  transaction: TransactionModel(
-                    date: "2021-12-22",
-                    fromBankAccountId: "id",
-                    id: "id",
-                    note: "a",
-                    symbolCoin: "BRl",
-                    title: "Com",
-                    transactionType: "gain",
-                    userId: "id",
-                    value: 35000.50,
-                  ),
-                ),
-                actions: <Widget>[
-                  IconSlideAction(
-                    caption: 'Archive',
-                    color: Colors.blue,
-                    icon: Icons.archive,
-                    onTap: () => {},
-                  ),
-                  IconSlideAction(
-                    caption: 'Share',
-                    color: Colors.indigo,
-                    icon: Icons.share,
-                    onTap: () => {},
-                  ),
-                ],
-                secondaryActions: <Widget>[
-                  IconSlideAction(
-                    caption: 'More',
-                    color: Colors.black45,
-                    icon: Icons.more_horiz,
-                    onTap: () => {},
-                  ),
-                  IconSlideAction(
-                    caption: 'Delete',
-                    color: Colors.red,
-                    icon: Icons.delete,
-                    onTap: () => {},
-                  ),
-                ],
-              ),
+                  transaction: transaction,
+                );
+              },
             ),
           ],
         ),

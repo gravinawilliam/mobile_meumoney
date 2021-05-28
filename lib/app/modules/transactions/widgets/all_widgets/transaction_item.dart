@@ -1,4 +1,6 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
@@ -18,6 +20,7 @@ class TransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final f = DateFormat('dd/MM');
     SizeConst().init(context);
     return Container(
       margin: EdgeInsets.only(
@@ -40,41 +43,53 @@ class TransactionItem extends StatelessWidget {
           ),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              StatusTransactionItem(
-                transaction: transaction,
+      child: InkWell(
+        onTap: () => showAdaptiveActionSheet(
+          context: context,
+          actions: <BottomSheetAction>[
+            BottomSheetAction(
+              title: Text(
+                "Apagar",
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SubtitleWidget(
-                    subTitle: "Paguei os 50 reais",
-                    hasMarginVertical: false,
-                  ),
-                  SubtitleWidget(
-                    subTitle: "Bens",
-                    hasMarginVertical: false,
-                    fontFamily: FontsConst.light,
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ],
+              onPressed: () {},
+            ),
+            BottomSheetAction(
+              title: Text(
+                "Editar",
               ),
-            ],
-          ),
-          SubtitleWidget(
-            subTitle: "25/05/2021",
-            fontSize: 10,
-            fontFamily: FontsConst.regular,
-            hasMarginVertical: false,
-            hasMarginHorizontal: false,
-          ),
-        ],
+              onPressed: () {},
+            ),
+          ],
+        ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          bottomLeft: Radius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            StatusTransactionItem(
+              transactionType: transaction.transactionType,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SubtitleWidget(
+                  subTitle: transaction.title,
+                  hasMarginVertical: false,
+                ),
+                SubtitleWidget(
+                  subTitle: "Bens",
+                  hasMarginVertical: false,
+                  fontFamily: FontsConst.light,
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

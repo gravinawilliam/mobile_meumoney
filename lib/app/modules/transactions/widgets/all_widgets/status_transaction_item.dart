@@ -2,13 +2,12 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../shared/constants/constants.dart';
-import '../../../../shared/models/models.dart';
 
 class StatusTransactionItem extends StatelessWidget {
-  final TransactionModel transaction;
+  final String transactionType;
 
   const StatusTransactionItem({
-    required this.transaction,
+    required this.transactionType,
   });
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class StatusTransactionItem extends StatelessWidget {
         SizeConst.paddingHorizontal / 2.5,
       ),
       decoration: BoxDecoration(
-        color: transaction.transactionType == "gain"
+        color: transactionType == "gain"
             ? DarkColorsConst.primary
             : Color(0xFFCC444B).withOpacity(
                 0.8,
@@ -28,7 +27,7 @@ class StatusTransactionItem extends StatelessWidget {
         ),
       ),
       child: Icon(
-        transaction.transactionType == "gain"
+        transactionType == "gain"
             ? EvaIcons.arrowIosUpward
             : EvaIcons.arrowIosDownward,
         color: Colors.white,

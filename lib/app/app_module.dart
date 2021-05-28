@@ -15,6 +15,7 @@ import 'modules/home/home_store.dart';
 import 'modules/root/root_module.dart';
 import 'modules/splash/repositories/splash_repository.dart';
 import 'modules/splash/splash_module.dart';
+import 'modules/transactions/repositories/transactions_repository.dart';
 import 'shared/constants/constants.dart';
 import 'shared/services/money_service.dart';
 import 'shared/widgets/all_widgets/box_money/box_money_store.dart';
@@ -39,6 +40,7 @@ class AppModule extends Module {
     $BoxMoneyStore,
     $MoneyService,
     $SlideCardsStore,
+    $TransactionsRepository,
     Bind((i) => Dio()),
   ];
 
