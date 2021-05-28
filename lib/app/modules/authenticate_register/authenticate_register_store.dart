@@ -170,7 +170,7 @@ abstract class _AuthenticateRegisterStoreBase with Store {
     } catch (error) {
       asuka.showSnackBar(
         SnackBar(
-          backgroundColor: DarkColorsConst.primary,
+          backgroundColor: DarkColorsConst.error,
           content: Text(
             "Username ou senha incorreto",
             textAlign: TextAlign.center,
