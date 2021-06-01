@@ -27,7 +27,7 @@ class RootModule extends Module {
           module: HomeModule(),
         ),
         ModuleRoute(
-          AppRoutersConst.accounts,
+          AppRoutersConst.profile,
           module: ProfileModule(),
         ),
         ModuleRoute(
