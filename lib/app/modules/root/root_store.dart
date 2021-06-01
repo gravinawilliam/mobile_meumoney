@@ -15,10 +15,10 @@ abstract class _RootStoreBase with Store {
         Modular.to.navigate('../home');
         break;
       case 1:
-        Modular.to.navigate('../accounts');
+        Modular.to.navigate('../transactionsList');
         break;
       case 2:
-        Modular.to.navigate('../transactionsList');
+        Modular.to.navigate('../accounts');
         break;
       default:
     }

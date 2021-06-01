@@ -19,10 +19,44 @@ final $CreateEditBankAccountStore = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
+  final _$userAtom = Atom(name: '_CreateEditBankAccountStoreBase.user');
+
+  @override
+  UserModel get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(UserModel value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  final _$accountValueTextEditingControllerAtom = Atom(
+      name:
+          '_CreateEditBankAccountStoreBase.accountValueTextEditingController');
+
+  @override
+  TextEditingController get accountValueTextEditingController {
+    _$accountValueTextEditingControllerAtom.reportRead();
+    return super.accountValueTextEditingController;
+  }
+
+  @override
+  set accountValueTextEditingController(TextEditingController value) {
+    _$accountValueTextEditingControllerAtom
+        .reportWrite(value, super.accountValueTextEditingController, () {
+      super.accountValueTextEditingController = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-
+user: ${user},
+accountValueTextEditingController: ${accountValueTextEditingController}
     ''';
   }
 }

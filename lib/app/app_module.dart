@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'modules/accounts/accounts_store.dart';
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
@@ -12,6 +11,7 @@ import 'modules/create_transaction/create_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content_transaction_store.dart';
 import 'modules/home/home_store.dart';
+import 'modules/profile/profile_store.dart';
 import 'modules/root/root_module.dart';
 import 'modules/splash/repositories/splash_repository.dart';
 import 'modules/splash/splash_module.dart';
@@ -32,7 +32,7 @@ class AppModule extends Module {
     $CreateTransactionStore,
     $SplashRepository,
     $HomeStore,
-    $AccountsStore,
+    $ProfileStore,
     $AuthenticateRegisterStore,
     $AuthenticateRepository,
     $CreditCardController,

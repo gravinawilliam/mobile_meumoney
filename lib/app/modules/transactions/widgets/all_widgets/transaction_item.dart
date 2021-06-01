@@ -1,6 +1,5 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
@@ -20,7 +19,6 @@ class TransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final f = DateFormat('dd/MM');
     SizeConst().init(context);
     return Container(
       margin: EdgeInsets.only(

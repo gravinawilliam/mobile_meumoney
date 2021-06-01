@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'accounts_store.dart';
+part of 'profile_store.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $AccountsStore = BindInject(
-  (i) => AccountsStore(),
-  isSingleton: true,
+final $ProfileStore = BindInject(
+  (i) => ProfileStore(),
+  isSingleton: false,
   isLazy: true,
 );
 
@@ -18,8 +18,8 @@ final $AccountsStore = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AccountsStore on _AccountsStoreBase, Store {
-  final _$userAtom = Atom(name: '_AccountsStoreBase.user');
+mixin _$ProfileStore on _ProfileStoreBase, Store {
+  final _$userAtom = Atom(name: '_ProfileStoreBase.user');
 
   @override
   UserModel get user {
@@ -35,7 +35,7 @@ mixin _$AccountsStore on _AccountsStoreBase, Store {
   }
 
   final _$currentIndexSliderAtom =
-      Atom(name: '_AccountsStoreBase.currentIndexSlider');
+      Atom(name: '_ProfileStoreBase.currentIndexSlider');
 
   @override
   int get currentIndexSlider {
@@ -50,7 +50,7 @@ mixin _$AccountsStore on _AccountsStoreBase, Store {
     });
   }
 
-  final _$valuesVisibleAtom = Atom(name: '_AccountsStoreBase.valuesVisible');
+  final _$valuesVisibleAtom = Atom(name: '_ProfileStoreBase.valuesVisible');
 
   @override
   bool get valuesVisible {
@@ -65,28 +65,28 @@ mixin _$AccountsStore on _AccountsStoreBase, Store {
     });
   }
 
-  final _$_AccountsStoreBaseActionController =
-      ActionController(name: '_AccountsStoreBase');
+  final _$_ProfileStoreBaseActionController =
+      ActionController(name: '_ProfileStoreBase');
 
   @override
   void changedCard({required int index}) {
-    final _$actionInfo = _$_AccountsStoreBaseActionController.startAction(
-        name: '_AccountsStoreBase.changedCard');
+    final _$actionInfo = _$_ProfileStoreBaseActionController.startAction(
+        name: '_ProfileStoreBase.changedCard');
     try {
       return super.changedCard(index: index);
     } finally {
-      _$_AccountsStoreBaseActionController.endAction(_$actionInfo);
+      _$_ProfileStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void exchangeVisibility() {
-    final _$actionInfo = _$_AccountsStoreBaseActionController.startAction(
-        name: '_AccountsStoreBase.exchangeVisibility');
+    final _$actionInfo = _$_ProfileStoreBaseActionController.startAction(
+        name: '_ProfileStoreBase.exchangeVisibility');
     try {
       return super.exchangeVisibility();
     } finally {
-      _$_AccountsStoreBaseActionController.endAction(_$actionInfo);
+      _$_ProfileStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

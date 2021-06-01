@@ -1,19 +1,19 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'accounts_page.dart';
-import 'accounts_store.dart';
+import 'profile_page.dart';
+import 'profile_store.dart';
 
-class AccountsModule extends Module {
+class ProfileModule extends Module {
   @override
   final List<Bind> binds = [
-    $AccountsStore,
+    $ProfileStore,
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => AccountsPage(),
+      child: (_, args) => ProfilePage(),
     ),
   ];
 }

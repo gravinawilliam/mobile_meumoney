@@ -3,12 +3,12 @@ import 'package:mobx/mobx.dart';
 
 import '../../shared/models/models.dart';
 
-part 'accounts_store.g.dart';
+part 'profile_store.g.dart';
 
-@Injectable()
-class AccountsStore = _AccountsStoreBase with _$AccountsStore;
+@Injectable(singleton: false)
+class ProfileStore = _ProfileStoreBase with _$ProfileStore;
 
-abstract class _AccountsStoreBase with Store {
+abstract class _ProfileStoreBase with Store {
   @observable
   UserModel user = UserModel.user!;
 

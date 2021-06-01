@@ -86,11 +86,9 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
                 ? EvaIcons.homeOutline
                 : EvaIcons.home,
             controller.selectedIndex != 1
-                ? EvaIcons.creditCardOutline
-                : EvaIcons.creditCard,
-            controller.selectedIndex != 2
                 ? EvaIcons.listOutline
                 : EvaIcons.list,
+            controller.selectedIndex != 2 ? EvaIcons.person : EvaIcons.person,
           ],
           activeIndex: store.selectedIndex,
           gapLocation: GapLocation.end,

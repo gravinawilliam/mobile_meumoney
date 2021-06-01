@@ -22,118 +22,116 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     SizeConst().init(context);
     return Scaffold(
       body: Observer(
-        builder: (_) {
-          return ScrollBody(
-            hasMargin: false,
-            children: [
-              HeaderHome(
-                user: store.user,
-              ),
-              IndexedStack(
-                index: store.user.bankAccounts.isEmpty ? 0 : 1,
-                children: [
-                  Container(
-                    width: SizeConst.screenWidthWithMargin,
-                    height: SizeConst.screenHeight * 0.22,
-                    decoration: BoxDecoration(
-                      color: DarkColorsConst.saldoGeral.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(
-                        SizeConst.paddingHorizontal * 0.5,
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          iconSize: 32,
-                          icon: Icon(
-                            EvaIcons.plusSquareOutline,
-                          ),
-                          onPressed: () => Modular.to.pushNamed(
-                            AppRoutersConst.createEditBankAccount,
-                          ),
-                        ),
-                        Text(
-                          "Adicionar Conta de banco",
-                        ),
-                      ],
+        builder: (_) => ScrollBody(
+          hasMargin: false,
+          children: [
+            HeaderHome(
+              user: store.user,
+            ),
+            IndexedStack(
+              index: store.user.bankAccounts.isEmpty ? 0 : 1,
+              children: [
+                Container(
+                  width: SizeConst.screenWidthWithMargin,
+                  height: SizeConst.screenHeight * 0.22,
+                  decoration: BoxDecoration(
+                    color: DarkColorsConst.saldoGeral.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(
+                      SizeConst.paddingHorizontal * 0.5,
                     ),
                   ),
-                  SlideCardsWidget(
-                    valuesVisible: store.valuesVisible,
-                    bankAccouts: store.user.bankAccounts,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        iconSize: 32,
+                        icon: Icon(
+                          EvaIcons.plusSquareOutline,
+                        ),
+                        onPressed: () => Modular.to.pushNamed(
+                          AppRoutersConst.createEditBankAccount,
+                        ),
+                      ),
+                      Text(
+                        "Adicionar Conta de banco",
+                      ),
+                    ],
+                  ),
+                ),
+                SlideCardsWidget(
+                  valuesVisible: store.valuesVisible,
+                  bankAccouts: store.user.bankAccounts,
+                ),
+              ],
+            ),
+            Container(
+              width: SizeConst.screenWidthWithMargin,
+              child: Column(
+                children: [
+                  SubtitleWidget(
+                    hasMarginHorizontal: false,
+                    alignment: Alignment.center,
+                    subTitle: "Maio de 2021",
+                    fontSize: 16,
+                  ),
+                  RowBoxMoney(
+                    symbolCoin: "BRL",
+                    listTransactions: [
+                      TransactionModel(
+                        date: "2021-12-22",
+                        fromBankAccountId: "id",
+                        id: "id",
+                        note: "a",
+                        symbolCoin: "BRl",
+                        title: "Com",
+                        transactionType: "gain",
+                        userId: "id",
+                        value: 10000.50,
+                      ),
+                      TransactionModel(
+                        date: "2021-12-22",
+                        fromBankAccountId: "id",
+                        id: "id",
+                        note: "a",
+                        symbolCoin: "BRl",
+                        title: "Com",
+                        transactionType: "expense",
+                        userId: "id",
+                        value: 2000.50,
+                      ),
+                      TransactionModel(
+                        date: "2021-12-22",
+                        fromBankAccountId: "id",
+                        id: "id",
+                        note: "a",
+                        symbolCoin: "BRl",
+                        title: "Com",
+                        transactionType: "gain",
+                        userId: "id",
+                        value: 35000.50,
+                      ),
+                      TransactionModel(
+                        date: "2021-12-22",
+                        fromBankAccountId: "id",
+                        id: "id",
+                        note: "a",
+                        symbolCoin: "BRl",
+                        title: "Com",
+                        transactionType: "expense",
+                        userId: "id",
+                        value: 333.50,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Container(
-                width: SizeConst.screenWidthWithMargin,
-                child: Column(
-                  children: [
-                    SubtitleWidget(
-                      hasMarginHorizontal: false,
-                      alignment: Alignment.center,
-                      subTitle: "Maio de 2021",
-                      fontSize: 16,
-                    ),
-                    RowBoxMoney(
-                      symbolCoin: "BRL",
-                      listTransactions: [
-                        TransactionModel(
-                          date: "2021-12-22",
-                          fromBankAccountId: "id",
-                          id: "id",
-                          note: "a",
-                          symbolCoin: "BRl",
-                          title: "Com",
-                          transactionType: "gain",
-                          userId: "id",
-                          value: 10000.50,
-                        ),
-                        TransactionModel(
-                          date: "2021-12-22",
-                          fromBankAccountId: "id",
-                          id: "id",
-                          note: "a",
-                          symbolCoin: "BRl",
-                          title: "Com",
-                          transactionType: "expense",
-                          userId: "id",
-                          value: 2000.50,
-                        ),
-                        TransactionModel(
-                          date: "2021-12-22",
-                          fromBankAccountId: "id",
-                          id: "id",
-                          note: "a",
-                          symbolCoin: "BRl",
-                          title: "Com",
-                          transactionType: "gain",
-                          userId: "id",
-                          value: 35000.50,
-                        ),
-                        TransactionModel(
-                          date: "2021-12-22",
-                          fromBankAccountId: "id",
-                          id: "id",
-                          note: "a",
-                          symbolCoin: "BRl",
-                          title: "Com",
-                          transactionType: "expense",
-                          userId: "id",
-                          value: 333.50,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SubtitleWidget(
-                subTitle: "Transações",
-                alignment: Alignment.topLeft,
-              ),
-            ],
-          );
-        },
+            ),
+            SubtitleWidget(
+              subTitle: "Transações",
+              alignment: Alignment.topLeft,
+            ),
+          ],
+        ),
       ),
     );
   }

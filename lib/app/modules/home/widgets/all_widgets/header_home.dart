@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
-import '../../../../shared/widgets/all_widgets/subtitle_widget.dart';
+import '../../../../shared/widgets/all_widgets/title_widget.dart';
 import '../../home_store.dart';
 
 class HeaderHome extends StatefulWidget {
@@ -31,11 +31,8 @@ class _HeaderHomeState extends ModularState<HeaderHome, HomeStore> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SubtitleWidget(
-            hasMarginHorizontal: false,
-            subTitle: widget.user.name,
-            fontFamily: FontsConst.bold,
-            fontSize: 18,
+          TitleWidget(
+            title: store.user.name,
           ),
           Observer(
             builder: (_) => IconButton(
