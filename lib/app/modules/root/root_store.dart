@@ -18,7 +18,7 @@ abstract class _RootStoreBase with Store {
         Modular.to.navigate('../transactionsList');
         break;
       case 2:
-        Modular.to.navigate('../accounts');
+        Modular.to.navigate('../profile');
         break;
       default:
     }

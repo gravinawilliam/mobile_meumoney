@@ -28,41 +28,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             HeaderHome(
               user: store.user,
             ),
-            IndexedStack(
-              index: store.user.bankAccounts.isEmpty ? 0 : 1,
-              children: [
-                Container(
-                  width: SizeConst.screenWidthWithMargin,
-                  height: SizeConst.screenHeight * 0.22,
-                  decoration: BoxDecoration(
-                    color: DarkColorsConst.saldoGeral.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(
-                      SizeConst.paddingHorizontal * 0.5,
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        iconSize: 32,
-                        icon: Icon(
-                          EvaIcons.plusSquareOutline,
-                        ),
-                        onPressed: () => Modular.to.pushNamed(
-                          AppRoutersConst.createEditBankAccount,
-                        ),
-                      ),
-                      Text(
-                        "Adicionar Conta de banco",
-                      ),
-                    ],
-                  ),
-                ),
-                SlideCardsWidget(
-                  valuesVisible: store.valuesVisible,
-                  bankAccouts: store.user.bankAccounts,
-                ),
-              ],
+            SlideCardsWidget(
+              valuesVisible: store.valuesVisible,
+              bankAccouts: store.user.bankAccounts,
             ),
             Container(
               width: SizeConst.screenWidthWithMargin,

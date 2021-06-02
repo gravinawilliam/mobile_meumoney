@@ -18,6 +18,7 @@ import 'modules/splash/splash_module.dart';
 import 'modules/transactions/repositories/transactions_repository.dart';
 import 'shared/constants/constants.dart';
 import 'shared/services/money_service.dart';
+import 'shared/services/user_service.dart';
 import 'shared/widgets/all_widgets/box_money/box_money_store.dart';
 import 'shared/widgets/all_widgets/credit_card/credit_card_controller.dart';
 import 'shared/widgets/all_widgets/row_box_money/row_box_money_store.dart';
@@ -41,6 +42,7 @@ class AppModule extends Module {
     $MoneyService,
     $SlideCardsStore,
     $TransactionsRepository,
+    $UserService,
     Bind((i) => Dio()),
   ];
 
