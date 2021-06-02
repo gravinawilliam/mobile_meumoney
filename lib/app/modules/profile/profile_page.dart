@@ -61,26 +61,15 @@ class ProfilePageState extends ModularState<ProfilePage, ProfileStore> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SubtitleWidget(
-                subTitle: "Contas",
-                fontFamily: FontsConst.medium,
-                hasMarginVertical: false,
-                fontSize: 14,
-              ),
-              IconButton(
-                onPressed: () => Modular.to.pushNamed(
-                  AppRoutersConst.createEditBankAccount,
-                ),
-                icon: Icon(
-                  EvaIcons.plusSquare,
-                ),
-              ),
-            ],
+          SubtitleWidget(
+            alignment: Alignment.topLeft,
+            subTitle: "Contas",
+            fontFamily: FontsConst.medium,
+            hasMarginVertical: false,
+            fontSize: 14,
           ),
           SlideCardsWidget(
+            hasMarginTop: true,
             bankAccouts: store.user.bankAccounts,
           ),
         ],

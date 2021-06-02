@@ -40,19 +40,21 @@ class BankAccountModel {
         'bank': bank.toMap(),
       };
 
-  factory BankAccountModel.fromMap(Map<String, dynamic> map) =>
-      BankAccountModel(
-        id: map['id'],
-        accountNumbers: map['accountNumbers'],
-        cardholderName: map['cardholderName'],
-        balance: map['balance'],
-        monthValidity: map['monthValidity'],
-        yearValidity: map['yearValidity'],
-        userId: map['userId'],
-        bankId: map['bankId'],
-        symbolCoin: map['symbolCoin'],
-        bank: BankModel.fromMap(map['bank']),
-      );
+  factory BankAccountModel.fromMap(Map<String, dynamic> map) {
+    var balance = map['balance'];
+    return BankAccountModel(
+      id: map['id'],
+      accountNumbers: map['accountNumbers'],
+      cardholderName: map['cardholderName'],
+      balance: balance.toDouble(),
+      monthValidity: map['monthValidity'],
+      yearValidity: map['yearValidity'],
+      userId: map['userId'],
+      bankId: map['bankId'],
+      symbolCoin: map['symbolCoin'],
+      bank: BankModel.fromMap(map['bank']),
+    );
+  }
 
   String toJson() => json.encode(toMap());
 

@@ -6,6 +6,7 @@ import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
 import 'modules/create_edit_bank_account/create_edit_bank_account_module.dart';
 import 'modules/create_edit_bank_account/create_edit_bank_account_store.dart';
+import 'modules/create_edit_bank_account/repositories/create_edit_account_repository.dart';
 import 'modules/create_transaction/create_transaction_module.dart';
 import 'modules/create_transaction/create_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
@@ -27,6 +28,7 @@ import 'shared/widgets/all_widgets/slide_cards/slide_cards_store.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    $CreateEditAccountRepository,
     $CreateEditBankAccountStore,
     $ListCategoriesTransactionStore,
     $TabBarContentTransactionStore,

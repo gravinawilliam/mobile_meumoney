@@ -16,7 +16,9 @@ part 'authenticate_repository.g.dart';
 class AuthenticateRepository implements IAuthenticateRepository {
   final Dio _dio;
 
-  AuthenticateRepository(this._dio);
+  AuthenticateRepository(
+    this._dio,
+  );
 
   @override
   Future<Either<FailureAuthenticate, ResponseCreateSessionModel>> createSession(

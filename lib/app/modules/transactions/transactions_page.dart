@@ -42,12 +42,17 @@ class TransactionsPageState
                 calendarFormat: CalendarFormat.week,
                 rowHeight: SizeConst.paddingVertical * 2,
                 calendarStyle: CalendarStyle(
-                  isTodayHighlighted: true,
                   defaultTextStyle: TextStyle(
                     fontSize: 14,
                   ),
                   selectedDecoration: BoxDecoration(
                     color: DarkColorsConst.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  todayDecoration: BoxDecoration(
+                    color: DarkColorsConst.backgroundScaffold.withOpacity(
+                      0.9,
+                    ),
                     shape: BoxShape.circle,
                   ),
                 ),

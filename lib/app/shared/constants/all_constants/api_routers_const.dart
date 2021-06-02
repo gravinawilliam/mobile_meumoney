@@ -4,4 +4,5 @@ class ApiRoutersConst {
   static const String createUser = '$_baseUrl/users';
   static const String getUser = '$_baseUrl/profiles';
   static const String getTransactionsByDateUserId = '$_baseUrl/transactions';
+  static const String createBankAccount = '$_baseUrl/bankAccounts';
 }
