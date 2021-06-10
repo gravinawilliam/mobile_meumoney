@@ -13,6 +13,9 @@ abstract class _HomeStoreBase with Store {
   UserModel user = UserModel.user!;
 
   @observable
+  List<BankAccountModel>? bankAccouts = UserModel.bankAccounts;
+
+  @observable
   bool valuesVisible = true;
 
   @action

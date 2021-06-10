@@ -35,6 +35,7 @@ class AuthenticateRepository implements IAuthenticateRepository {
       var result = ResponseCreateSessionModel.fromMap(response.data);
       return Right(result);
     } on DioError catch (error) {
+      print(error);
       return Left(
         FailureAuthenticate(
           message: error.response!.data,

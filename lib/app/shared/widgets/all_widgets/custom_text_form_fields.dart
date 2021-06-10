@@ -8,9 +8,7 @@ class CustomTextFormFields extends StatelessWidget {
   final String? labelText;
   final bool obscureText;
   final void Function(String)? onChanged;
-  final String? errorText;
   final TextAlign textAlign;
-  final String initialValue;
   final double hintFontsize;
   final bool? enable;
   final int? maxLength;
@@ -24,10 +22,8 @@ class CustomTextFormFields extends StatelessWidget {
     this.maxLength,
     this.inputFormatters,
     this.textAlign = TextAlign.left,
-    this.initialValue = "",
     this.hintFontsize = 15,
     required this.onChanged,
-    required this.errorText,
     required this.keyboardType,
   });
 
@@ -35,27 +31,28 @@ class CustomTextFormFields extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConst().init(context);
     return Container(
-      margin: EdgeInsets.symmetric(vertical: SizeConst.paddingVertical * 0.6),
+      margin: EdgeInsets.only(
+        top: SizeConst.paddingVertical * 0.6,
+      ),
       child: TextFormField(
-          initialValue: initialValue,
-          textAlign: textAlign,
-          enabled: enable,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          inputFormatters: inputFormatters,
-          onChanged: onChanged,
-          maxLength: maxLength,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+        textAlign: textAlign,
+        enabled: enable,
+        keyboardType: keyboardType,
+        obscureText: obscureText,
+        inputFormatters: inputFormatters,
+        onChanged: onChanged,
+        maxLength: maxLength,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+        ),
+        decoration: ThemesConst.authenticateTextFormField.copyWith(
+          hintText: hintText,
+          hintStyle: TextStyle(
+            fontSize: hintFontsize,
           ),
-          decoration: ThemesConst.authenticateTextFormField.copyWith(
-            hintText: hintText,
-            errorText: errorText,
-            hintStyle: TextStyle(
-              fontSize: hintFontsize,
-            ),
-          )),
+        ),
+      ),
     );
   }
 }

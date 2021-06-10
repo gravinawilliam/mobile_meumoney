@@ -19,29 +19,26 @@ class CreateBankAccountModel {
     required this.symbolCoin,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'accountNumbers': accountNumbers,
-      'balance': balance,
-      'cardHolderName': cardHolderName,
-      'bankId': bankId,
-      'montValidity': montValidity,
-      'yearValidity': yearValidity,
-      'symbolCoin': symbolCoin,
-    };
-  }
+  Map<String, dynamic> toMap() => {
+        'accountNumbers': accountNumbers,
+        'balance': balance,
+        'cardHolderName': cardHolderName,
+        'bankId': bankId,
+        'montValidity': montValidity,
+        'yearValidity': yearValidity,
+        'symbolCoin': symbolCoin,
+      };
 
-  factory CreateBankAccountModel.fromMap(Map<String, dynamic> map) {
-    return CreateBankAccountModel(
-      accountNumbers: map['accountNumbers'],
-      balance: map['balance'],
-      cardHolderName: map['cardHolderName'],
-      bankId: map['bankId'],
-      montValidity: map['montValidity'],
-      yearValidity: map['yearValidity'],
-      symbolCoin: map['symbolCoin'],
-    );
-  }
+  factory CreateBankAccountModel.fromMap(Map<String, dynamic> map) =>
+      CreateBankAccountModel(
+        accountNumbers: map['accountNumbers'],
+        balance: map['balance'],
+        cardHolderName: map['cardHolderName'],
+        bankId: map['bankId'],
+        montValidity: map['montValidity'],
+        yearValidity: map['yearValidity'],
+        symbolCoin: map['symbolCoin'],
+      );
 
   String toJson() => json.encode(toMap());
 

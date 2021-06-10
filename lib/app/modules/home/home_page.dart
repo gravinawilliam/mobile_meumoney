@@ -29,7 +29,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             ),
             SlideCardsWidget(
               valuesVisible: store.valuesVisible,
-              bankAccouts: store.user.bankAccounts,
+              bankAccouts: store.bankAccouts ?? [],
             ),
             Container(
               width: SizeConst.screenWidthWithMargin,

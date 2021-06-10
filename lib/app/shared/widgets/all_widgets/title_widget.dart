@@ -16,7 +16,7 @@ class _TitleWidgetState extends State<TitleWidget> {
         widget.title,
         style: TextStyle(
           fontFamily: FontsConst.bold,
-          fontSize: 18,
+          fontSize: 20,
         ),
         minFontSize: 12,
       );

@@ -36,4 +36,16 @@ class SplashRepository implements ISplashRepository {
       );
     }
   }
+
+  @override
+  Future<List<BankAccountModel>> getBankAccounts() async {
+    _dio.options.headers["Authorization"] = "Bearer ${UserModel.token}";
+    var response = await _dio.get(
+      ApiRoutersConst.getBankAccounts,
+    );
+    var result = (response.data as List)
+        .map((e) => BankAccountModel.fromMap(e))
+        .toList();
+    return result;
+  }
 }

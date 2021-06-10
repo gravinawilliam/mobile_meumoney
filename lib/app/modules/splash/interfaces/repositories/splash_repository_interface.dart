@@ -7,4 +7,5 @@ abstract class ISplashRepository {
   Future<Either<FailureDio, UserModel>> getUserApi({
     required String token,
   });
+  Future<List<BankAccountModel>> getBankAccounts();
 }

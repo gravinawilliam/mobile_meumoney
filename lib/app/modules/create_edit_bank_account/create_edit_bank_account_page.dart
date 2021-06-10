@@ -154,7 +154,6 @@ class _CreateEditBankAccountPageState extends ModularState<
           CustomTextFormFields(
             hintText: "valor",
             onChanged: (value) {},
-            errorText: "",
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
             ),
@@ -162,14 +161,12 @@ class _CreateEditBankAccountPageState extends ModularState<
           CustomTextFormFields(
             hintText: "Nome",
             onChanged: (value) {},
-            errorText: "",
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
             ),
           ),
           CustomTextFormFields(
             onChanged: (value) {},
-            errorText: "",
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
             ),

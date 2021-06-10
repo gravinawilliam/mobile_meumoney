@@ -19,21 +19,18 @@ class _RegisterWidgetState
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CustomTextFormFields(
-              errorText: "",
               hintText: "Nome",
               enable: store.enableTextFormField,
               onChanged: store.setRegisterName,
               keyboardType: TextInputType.text,
             ),
             CustomTextFormFields(
-              errorText: "",
               hintText: "Email",
               enable: store.enableTextFormField,
               onChanged: store.setRegisterEmail,
               keyboardType: TextInputType.emailAddress,
             ),
             CustomTextFormFields(
-              errorText: "",
               hintText: "Senha",
               obscureText: true,
               enable: store.enableTextFormField,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../shared/constants/constants.dart';
+import '../../../../../shared/models/models.dart';
 import '../../../../../shared/widgets/widgets_globais.dart';
 import '../../widgets_create_transaction.dart';
 import 'tab_bar_content_transaction_store.dart';
@@ -26,7 +27,7 @@ class _TabBarContentTransactionWidgetState extends ModularState<
               vertical: SizeConst.paddingVertical,
             ),
             child: SlideCardsWidget(
-              bankAccouts: store.user.bankAccounts,
+              bankAccouts: UserModel.bankAccounts,
             ),
           ),
           Container(
@@ -39,7 +40,6 @@ class _TabBarContentTransactionWidgetState extends ModularState<
               textAlign: TextAlign.left,
               hintText: "Valor da transação",
               onChanged: null,
-              errorText: null,
               keyboardType: TextInputType.numberWithOptions(
                 decimal: true,
               ),
@@ -54,7 +54,6 @@ class _TabBarContentTransactionWidgetState extends ModularState<
               textAlign: TextAlign.left,
               hintText: "Titulo",
               onChanged: null,
-              errorText: null,
               keyboardType: TextInputType.text,
             ),
           ),
@@ -64,7 +63,6 @@ class _TabBarContentTransactionWidgetState extends ModularState<
             ),
             child: CustomTextFormFields(
               onChanged: null,
-              errorText: null,
               keyboardType: TextInputType.text,
               hintText: "Descrição",
             ),

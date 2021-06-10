@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/constants/constants.dart';
 
+import '../../../shared/constants/constants.dart';
 import '../../../shared/errors/errors.dart';
 import '../../../shared/models/all_models/bank_account_model.dart';
 import '../interfaces/create_edit_account_interface.dart';

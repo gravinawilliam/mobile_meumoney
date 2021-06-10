@@ -1,4 +1,3 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -27,6 +26,7 @@ class ProfilePageState extends ModularState<ProfilePage, ProfileStore> {
               vertical: SizeConst.paddingVertical,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TitleWidget(
                   title: store.user.name,
@@ -37,11 +37,12 @@ class ProfilePageState extends ModularState<ProfilePage, ProfileStore> {
                   ),
                   onPressed: () => {},
                   child: Container(
-                    padding: EdgeInsets.all(
-                      SizeConst.paddingHorizontal * 0.1,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: SizeConst.paddingHorizontal * 0.3,
+                      vertical: SizeConst.paddingHorizontal * 0.2,
                     ),
                     margin: EdgeInsets.only(
-                      left: SizeConst.paddingHorizontal * 0.2,
+                      left: SizeConst.paddingHorizontal * 0.5,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
@@ -51,7 +52,7 @@ class ProfilePageState extends ModularState<ProfilePage, ProfileStore> {
                       ),
                     ),
                     child: SubtitleWidget(
-                      fontSize: 10,
+                      fontSize: 14,
                       subTitle: "Editar perfil",
                       hasMarginVertical: false,
                       hasMarginHorizontal: false,
@@ -60,17 +61,6 @@ class ProfilePageState extends ModularState<ProfilePage, ProfileStore> {
                 )
               ],
             ),
-          ),
-          SubtitleWidget(
-            alignment: Alignment.topLeft,
-            subTitle: "Contas",
-            fontFamily: FontsConst.medium,
-            hasMarginVertical: false,
-            fontSize: 14,
-          ),
-          SlideCardsWidget(
-            hasMarginTop: true,
-            bankAccouts: store.user.bankAccounts,
           ),
         ],
       ),
