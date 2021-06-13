@@ -17,7 +17,7 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
   Widget build(BuildContext context) {
     Timer(
       Duration(),
-      controller.verifyCurrentUser,
+      controller.verifyConnection,
     );
     SizeConst().init(context);
     return Scaffold(

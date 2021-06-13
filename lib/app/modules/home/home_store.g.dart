@@ -34,6 +34,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$bankAccoutsAtom = Atom(name: '_HomeStoreBase.bankAccouts');
+
+  @override
+  List<BankAccountModel>? get bankAccouts {
+    _$bankAccoutsAtom.reportRead();
+    return super.bankAccouts;
+  }
+
+  @override
+  set bankAccouts(List<BankAccountModel>? value) {
+    _$bankAccoutsAtom.reportWrite(value, super.bankAccouts, () {
+      super.bankAccouts = value;
+    });
+  }
+
   final _$valuesVisibleAtom = Atom(name: '_HomeStoreBase.valuesVisible');
 
   @override
@@ -67,6 +82,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   String toString() {
     return '''
 user: ${user},
+bankAccouts: ${bankAccouts},
 valuesVisible: ${valuesVisible}
     ''';
   }

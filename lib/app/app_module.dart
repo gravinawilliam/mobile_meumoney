@@ -4,6 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
+import 'modules/bank_account_details/bank_account_details_module.dart';
+import 'modules/bank_account_details/bank_account_details_store.dart';
 import 'modules/create_edit_bank_account/create_edit_bank_account_module.dart';
 import 'modules/create_edit_bank_account/create_edit_bank_account_store.dart';
 import 'modules/create_edit_bank_account/repositories/create_edit_account_repository.dart';
@@ -69,6 +71,10 @@ class AppModule extends Module {
     ModuleRoute(
       AppRoutersConst.createEditBankAccount,
       module: CreateEditBankAccountModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.bankAccountDetails,
+      module: BankAccountDetailsModule(),
     ),
   ];
 }

@@ -152,7 +152,7 @@ class _CreateEditBankAccountPageState extends ModularState<
             ),
           ),
           CustomTextFormFields(
-            hintText: "valor",
+            hintText: "Valor",
             onChanged: (value) {},
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
@@ -166,7 +166,9 @@ class _CreateEditBankAccountPageState extends ModularState<
             ),
           ),
           CustomTextFormFields(
-            onChanged: (value) {},
+            hintText: "Últimos numeros do cartão",
+            onChanged: store.setAccountNumbers,
+            maxLength: 4,
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
             ),

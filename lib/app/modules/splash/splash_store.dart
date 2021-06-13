@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -21,6 +22,17 @@ abstract class _SplashStoreBase with Store {
     this.userService,
     this.splashRepository,
   );
+
+  @action
+  Future<void> verifyConnection() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      await verifyCurrentUser();
+    } else {
+      Modular.to.pushReplacementNamed(AppRoutersConst.authenticateRegister);
+    }
+  }
 
   @action
   Future<void> verifyCurrentUser() async {

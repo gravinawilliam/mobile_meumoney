@@ -73,17 +73,12 @@ class _SlideCardsWidgetState
                   itemBuilder: (context, index, int) {
                     var bankAccountModel = widget.bankAccouts![index];
                     return Observer(
-                      builder: (_) => GestureDetector(
-                        onTap: () => Modular.to.pushNamed(
-                          AppRoutersConst.accountDetail,
-                        ),
-                        child: CreditCardWidget(
-                          sizeWidthCard: SizeConst.screenWidth -
-                              (3 * SizeConst.paddingHorizontal),
-                          bankAccount: bankAccountModel,
-                          sizeHeightCard: sizeHeightCard,
-                          valuesVisible: widget.valuesVisible,
-                        ),
+                      builder: (_) => CreditCardWidget(
+                        sizeWidthCard: SizeConst.screenWidth -
+                            (3 * SizeConst.paddingHorizontal),
+                        bankAccount: bankAccountModel,
+                        sizeHeightCard: sizeHeightCard,
+                        valuesVisible: widget.valuesVisible,
                       ),
                     );
                   },

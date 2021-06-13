@@ -261,6 +261,20 @@ mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
     return _$createBankAccountAsyncAction.run(() => super.createBankAccount());
   }
 
+  final _$_CreateEditBankAccountStoreBaseActionController =
+      ActionController(name: '_CreateEditBankAccountStoreBase');
+
+  @override
+  void setAccountNumbers(String value) {
+    final _$actionInfo = _$_CreateEditBankAccountStoreBaseActionController
+        .startAction(name: '_CreateEditBankAccountStoreBase.setAccountNumbers');
+    try {
+      return super.setAccountNumbers(value);
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

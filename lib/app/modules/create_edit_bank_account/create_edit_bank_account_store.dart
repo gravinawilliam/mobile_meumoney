@@ -66,6 +66,13 @@ abstract class _CreateEditBankAccountStoreBase with Store {
   RoundedLoadingButtonController buttonController =
       RoundedLoadingButtonController();
 
+  @action
+  void setAccountNumbers(String value) {
+    if (value.length <= 4) {
+      accountNumbers = value;
+    }
+  }
+
   @computed
   CreateBankAccountModel get createBankAccountCredential =>
       CreateBankAccountModel(
