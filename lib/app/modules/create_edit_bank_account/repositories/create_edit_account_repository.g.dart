@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_edit_account_repository.dart';
+part of 'create_edit_bank_account_repository.dart';
 
 // **************************************************************************
 // InjectionGenerator

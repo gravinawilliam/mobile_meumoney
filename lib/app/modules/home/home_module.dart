@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/bank_account_details/bank_account_details_module.dart';
-import 'package:mobile_meumoney/app/shared/constants/all_constants/app_routers_const.dart';
+import '../../shared/constants/all_constants/app_routers_const.dart';
 
+import '../bank_account_details/bank_account_details_module.dart';
 import 'home_page.dart';
 
 class HomeModule extends Module {

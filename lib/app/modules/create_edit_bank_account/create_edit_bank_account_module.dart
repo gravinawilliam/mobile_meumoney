@@ -7,15 +7,18 @@ class CreateEditBankAccountModule extends Module {
   @override
   final List<Bind> binds = [
     $CreateEditBankAccountStore,
+    Bind.singleton(
+      (i) => CreateEditBankAccountStore(
+        bankAccountModel: i.args!.data,
+      ),
+    ),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => CreateEditBankAccountPage(
-        bankAccount: args.data,
-      ),
+      child: (_, args) => CreateEditBankAccountPage(),
     )
   ];
 }

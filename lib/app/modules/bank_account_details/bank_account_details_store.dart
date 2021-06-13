@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../shared/models/models.dart';
 part 'bank_account_details_store.g.dart';
 
 @Injectable(singleton: false)

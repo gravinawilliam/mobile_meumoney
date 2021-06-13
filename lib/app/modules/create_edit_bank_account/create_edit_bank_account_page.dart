@@ -1,22 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../shared/constants/constants.dart';
-import '../../shared/models/models.dart';
 import '../../shared/widgets/all_widgets/title_widget.dart';
 import '../../shared/widgets/widgets_globais.dart';
 import 'create_edit_bank_account_store.dart';
 
 class CreateEditBankAccountPage extends StatefulWidget {
-  final BankAccountModel? bankAccount;
-
-  const CreateEditBankAccountPage({
-    this.bankAccount,
-  });
-
   @override
   _CreateEditBankAccountPageState createState() =>
       _CreateEditBankAccountPageState();
@@ -32,11 +26,17 @@ class _CreateEditBankAccountPageState extends ModularState<
         SizeConst.screenWidth - (2 * SizeConst.paddingHorizontal);
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => store.setNullBankAccount(),
+          icon: Icon(
+            EvaIcons.arrowLeft,
+          ),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: TitleWidget(
-          title: widget.bankAccount == null ? "Criar conta" : "Editar conta",
+          title: store.getTitle(),
         ),
       ),
       body: ScrollBody(
@@ -61,6 +61,8 @@ class _CreateEditBankAccountPageState extends ModularState<
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Observer(
                         builder: (_) => Container(
@@ -74,25 +76,19 @@ class _CreateEditBankAccountPageState extends ModularState<
                         ),
                       ),
                       Container(
-                        height: 40,
-                        width: sizeWidthCard * 0.55,
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.topRight,
+                        width: SizeConst.screenWidth / 2,
                         child: AutoSizeText(
-                          store.cardholderName,
-                          textAlign: TextAlign.right,
+                          store.balance.toString(),
                           style: TextStyle(
-                            fontFamily: FontsConst.regular,
-                            fontSize: 20,
+                            fontFamily: FontsConst.bold,
+                            fontSize: 16,
                             letterSpacing: 1,
                             color: Colors.white.withOpacity(0.8),
                           ),
-                          maxFontSize: 20,
                           minFontSize: 10,
                           maxLines: 1,
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
                       ),
                     ],
                   ),
@@ -153,17 +149,15 @@ class _CreateEditBankAccountPageState extends ModularState<
           ),
           CustomTextFormFields(
             hintText: "Valor",
-            onChanged: (value) {},
+            onChanged: store.setBalance,
             keyboardType: TextInputType.numberWithOptions(
               decimal: true,
             ),
           ),
           CustomTextFormFields(
             hintText: "Nome",
-            onChanged: (value) {},
-            keyboardType: TextInputType.numberWithOptions(
-              decimal: true,
-            ),
+            onChanged: store.setCardHolderName,
+            keyboardType: TextInputType.text,
           ),
           CustomTextFormFields(
             hintText: "Últimos numeros do cartão",
@@ -174,8 +168,8 @@ class _CreateEditBankAccountPageState extends ModularState<
             ),
           ),
           LoadingButton(
-            onPressed: () {},
-            title: widget.bankAccount == null ? "Criar conta" : "Editar conta",
+            onPressed: () => store.createBankAccount(),
+            title: store.getTitle().toUpperCase(),
             btnController: store.buttonController,
           )
         ],

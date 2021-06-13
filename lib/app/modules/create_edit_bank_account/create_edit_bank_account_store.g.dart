@@ -7,7 +7,9 @@ part of 'create_edit_bank_account_store.dart';
 // **************************************************************************
 
 final $CreateEditBankAccountStore = BindInject(
-  (i) => CreateEditBankAccountStore(i<ICreateEditAccountRepository>()),
+  (i) => CreateEditBankAccountStore(
+      repository: i<ICreateEditAccountRepository>(),
+      bankAccountModel: i<BankAccountModel>()),
   isSingleton: false,
   isLazy: true,
 );
@@ -30,6 +32,22 @@ mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
                   '_CreateEditBankAccountStoreBase.createBankAccountCredential'))
           .value;
 
+  final _$bankAccountAtom =
+      Atom(name: '_CreateEditBankAccountStoreBase.bankAccount');
+
+  @override
+  BankAccountModel? get bankAccount {
+    _$bankAccountAtom.reportRead();
+    return super.bankAccount;
+  }
+
+  @override
+  set bankAccount(BankAccountModel? value) {
+    _$bankAccountAtom.reportWrite(value, super.bankAccount, () {
+      super.bankAccount = value;
+    });
+  }
+
   final _$userAtom = Atom(name: '_CreateEditBankAccountStoreBase.user');
 
   @override
@@ -42,24 +60,6 @@ mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
   set user(UserModel value) {
     _$userAtom.reportWrite(value, super.user, () {
       super.user = value;
-    });
-  }
-
-  final _$accountValueTextEditingControllerAtom = Atom(
-      name:
-          '_CreateEditBankAccountStoreBase.accountValueTextEditingController');
-
-  @override
-  TextEditingController get accountValueTextEditingController {
-    _$accountValueTextEditingControllerAtom.reportRead();
-    return super.accountValueTextEditingController;
-  }
-
-  @override
-  set accountValueTextEditingController(TextEditingController value) {
-    _$accountValueTextEditingControllerAtom
-        .reportWrite(value, super.accountValueTextEditingController, () {
-      super.accountValueTextEditingController = value;
     });
   }
 
@@ -265,6 +265,41 @@ mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
       ActionController(name: '_CreateEditBankAccountStoreBase');
 
   @override
+  void verifyBankAccountNull() {
+    final _$actionInfo =
+        _$_CreateEditBankAccountStoreBaseActionController.startAction(
+            name: '_CreateEditBankAccountStoreBase.verifyBankAccountNull');
+    try {
+      return super.verifyBankAccountNull();
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setNullBankAccount() {
+    final _$actionInfo =
+        _$_CreateEditBankAccountStoreBaseActionController.startAction(
+            name: '_CreateEditBankAccountStoreBase.setNullBankAccount');
+    try {
+      return super.setNullBankAccount();
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBalance(String value) {
+    final _$actionInfo = _$_CreateEditBankAccountStoreBaseActionController
+        .startAction(name: '_CreateEditBankAccountStoreBase.setBalance');
+    try {
+      return super.setBalance(value);
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAccountNumbers(String value) {
     final _$actionInfo = _$_CreateEditBankAccountStoreBaseActionController
         .startAction(name: '_CreateEditBankAccountStoreBase.setAccountNumbers');
@@ -276,10 +311,32 @@ mixin _$CreateEditBankAccountStore on _CreateEditBankAccountStoreBase, Store {
   }
 
   @override
+  void setCardHolderName(String value) {
+    final _$actionInfo = _$_CreateEditBankAccountStoreBaseActionController
+        .startAction(name: '_CreateEditBankAccountStoreBase.setCardHolderName');
+    try {
+      return super.setCardHolderName(value);
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String getTitle() {
+    final _$actionInfo = _$_CreateEditBankAccountStoreBaseActionController
+        .startAction(name: '_CreateEditBankAccountStoreBase.getTitle');
+    try {
+      return super.getTitle();
+    } finally {
+      _$_CreateEditBankAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+bankAccount: ${bankAccount},
 user: ${user},
-accountValueTextEditingController: ${accountValueTextEditingController},
 redCardColor: ${redCardColor},
 greenCardColor: ${greenCardColor},
 blueCardColor: ${blueCardColor},
