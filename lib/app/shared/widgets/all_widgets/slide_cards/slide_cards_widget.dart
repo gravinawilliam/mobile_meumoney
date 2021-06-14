@@ -72,14 +72,12 @@ class _SlideCardsWidgetState
                   itemCount: widget.bankAccouts!.length,
                   itemBuilder: (context, index, int) {
                     var bankAccountModel = widget.bankAccouts![index];
-                    return Observer(
-                      builder: (_) => CreditCardWidget(
-                        sizeWidthCard: SizeConst.screenWidth -
-                            (3 * SizeConst.paddingHorizontal),
-                        bankAccount: bankAccountModel,
-                        sizeHeightCard: sizeHeightCard,
-                        valuesVisible: widget.valuesVisible,
-                      ),
+                    return CreditCardWidget(
+                      sizeWidthCard: SizeConst.screenWidth -
+                          (3 * SizeConst.paddingHorizontal),
+                      bankAccount: bankAccountModel,
+                      sizeHeightCard: sizeHeightCard,
+                      valuesVisible: widget.valuesVisible,
                     );
                   },
                 ),

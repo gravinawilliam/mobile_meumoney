@@ -32,7 +32,7 @@ class BankModel {
         redColorCard: map['redColorCard'],
         greenColorCard: map['greenColorCard'],
         blueColorCard: map['blueColorCard'],
-        logoUrl: map['logo_url'],
+        logoUrl: map['logoUrl'],
       );
 
   String toJson() => json.encode(toMap());

@@ -66,24 +66,22 @@ class _CreditCardWidgetState
                   height: 40,
                   width: widget.sizeWidthCard * 0.55,
                   alignment: Alignment.centerRight,
-                  child: Observer(
-                    builder: (_) => AutoSizeText(
-                      widget.valuesVisible
-                          ? controller.getbalance(
-                              balance: widget.bankAccount.balance,
-                              symbolCoin: widget.bankAccount.symbolCoin,
-                            )
-                          : "XX,XX",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        fontFamily: FontsConst.bold,
-                        fontSize: 15,
-                        letterSpacing: 1,
-                        color: Colors.white,
-                      ),
-                      minFontSize: 8,
-                      maxLines: 1,
+                  child: AutoSizeText(
+                    widget.valuesVisible
+                        ? controller.getbalance(
+                            balance: widget.bankAccount.balance,
+                            symbolCoin: widget.bankAccount.symbolCoin,
+                          )
+                        : "XX,XX",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontFamily: FontsConst.bold,
+                      fontSize: 15,
+                      letterSpacing: 1,
+                      color: Colors.white,
                     ),
+                    minFontSize: 8,
+                    maxLines: 1,
                   ),
                 ),
               ],
