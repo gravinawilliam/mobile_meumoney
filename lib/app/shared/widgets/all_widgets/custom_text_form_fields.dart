@@ -14,8 +14,10 @@ class CustomTextFormFields extends StatelessWidget {
   final bool hasMargin;
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
+  final String? initialValue;
 
   const CustomTextFormFields({
+    this.initialValue,
     this.hintText,
     this.labelText,
     this.enable,
@@ -39,6 +41,7 @@ class CustomTextFormFields extends StatelessWidget {
         right: hasMargin ? SizeConst.paddingHorizontal : 0,
       ),
       child: TextFormField(
+        initialValue: initialValue,
         textAlign: textAlign,
         enabled: enable,
         keyboardType: keyboardType,

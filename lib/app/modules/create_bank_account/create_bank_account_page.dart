@@ -213,7 +213,7 @@ class CreateBankAccountPageState
             ),
             CustomTextFormFields(
               hasMargin: true,
-              hintText: "Nome",
+              hintText: "Titular",
               onChanged: store.setCardHolderName,
               keyboardType: TextInputType.text,
             ),

@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/models.dart';
 
 import '../../../shared/constants/constants.dart';
+import '../../../shared/models/all_models/exchange_model.dart';
+import '../../../shared/models/models.dart';
 import '../interfaces/home_repository_interface.dart';
 import '../models/response_get_gains_expenses_model.dart';
 
@@ -33,6 +34,24 @@ class HomeRepository implements IHomeRepository {
     } on DioError catch (error) {
       print(error);
       return ResponseGetGainsExpenseModel(earningsAmount: 0, expenseAmount: 0);
+    }
+  }
+
+  @override
+  Future<List<ExchangeModel>> getExchanges() async {
+    try {
+      var response = await _dio.get(
+        ApiRoutersConst.getCoins,
+      );
+      var result = (response.data as List)
+          .map(
+            (e) => ExchangeModel.fromMap(e),
+          )
+          .toList();
+      return result;
+    } on DioError catch (error) {
+      print(error);
+      return <ExchangeModel>[];
     }
   }
 }

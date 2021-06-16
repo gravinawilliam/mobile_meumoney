@@ -9,4 +9,6 @@ class ApiRoutersConst {
   static const String getBanks = '$_baseUrl/banks';
   static const String getGainsExpenses =
       '$_baseUrl/transactions/getValueGainExpense';
+  static const String getCoins = '$_baseUrl/coins';
+  static const String createTransaction = '$_baseUrl/transactions';
 }

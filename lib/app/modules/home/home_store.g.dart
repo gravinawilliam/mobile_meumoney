@@ -94,12 +94,34 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$exchangesListAtom = Atom(name: '_HomeStoreBase.exchangesList');
+
+  @override
+  List<ExchangeModel> get exchangesList {
+    _$exchangesListAtom.reportRead();
+    return super.exchangesList;
+  }
+
+  @override
+  set exchangesList(List<ExchangeModel> value) {
+    _$exchangesListAtom.reportWrite(value, super.exchangesList, () {
+      super.exchangesList = value;
+    });
+  }
+
   final _$getGainsExpensesAsyncAction =
       AsyncAction('_HomeStoreBase.getGainsExpenses');
 
   @override
   Future getGainsExpenses() {
     return _$getGainsExpensesAsyncAction.run(() => super.getGainsExpenses());
+  }
+
+  final _$getExchangesAsyncAction = AsyncAction('_HomeStoreBase.getExchanges');
+
+  @override
+  Future getExchanges() {
+    return _$getExchangesAsyncAction.run(() => super.getExchanges());
   }
 
   final _$_HomeStoreBaseActionController =
@@ -117,13 +139,25 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void setSymbolCoin(int index) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setSymbolCoin');
+    try {
+      return super.setSymbolCoin(index);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 user: ${user},
 gainsMonth: ${gainsMonth},
 expensesMonth: ${expensesMonth},
 bankAccouts: ${bankAccouts},
-valuesVisible: ${valuesVisible}
+valuesVisible: ${valuesVisible},
+exchangesList: ${exchangesList}
     ''';
   }
 }

@@ -7,18 +7,15 @@ class EditBankAccountModule extends Module {
   @override
   final List<Bind> binds = [
     $EditBankAccountStore,
-    Bind.singleton(
-      (i) => EditBankAccountStore(
-        bankAccount: i.args?.data,
-      ),
-    ),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => EditBankAccountPage(),
+      child: (_, args) => EditBankAccountPage(
+        bankAccount: args.data,
+      ),
     ),
   ];
 }

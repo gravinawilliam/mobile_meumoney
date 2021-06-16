@@ -2,7 +2,6 @@ import 'package:asuka/asuka.dart' as asuka;
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/modules/home/home_store.dart';
 import 'package:mobx/mobx.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -10,6 +9,7 @@ import '../../shared/constants/constants.dart';
 import '../../shared/errors/errors.dart';
 import '../../shared/interfaces/services/money_service_interface.dart';
 import '../../shared/models/models.dart';
+import '../home/home_store.dart';
 import 'interfaces/create_bank_account_repository_interface.dart';
 import 'models/create_bank_account_model.dart';
 
