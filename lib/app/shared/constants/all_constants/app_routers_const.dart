@@ -7,6 +7,7 @@ class AppRoutersConst {
   static const String bankAccountDetails = "/bankAccountDetails";
   static const String createTransactions = "/createTransactions";
   static const String transactionsList = "/transactionsList";
-  static const String createEditBankAccount = "/createEditBankAccount";
+  static const String createBankAccount = "/createBankAccount";
+  static const String editBankAccount = "/editBankAccount";
   static const String profile = "/profile";
 }

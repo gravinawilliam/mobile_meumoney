@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../constants/constants.dart';
-import '../../../models/models.dart';
 import '../../widgets_globais.dart';
 import '../box_money/box_money_widget.dart';
 import 'row_box_money_store.dart';
 
 class RowBoxMoney extends StatefulWidget {
-  final List<TransactionModel> listTransactions;
+  final double gainsMonth;
+  final double expensesMonth;
   final String symbolCoin;
 
   const RowBoxMoney({
-    required this.listTransactions,
-    required this.symbolCoin,
+    required this.expensesMonth,
+    required this.gainsMonth,
+    this.symbolCoin = "BRL",
   });
 
   @override
@@ -24,10 +25,9 @@ class RowBoxMoney extends StatefulWidget {
 class _RowBoxMoneyState extends ModularState<RowBoxMoney, RowBoxMoneyStore> {
   @override
   Widget build(BuildContext context) {
-    store.getValueTransactions(
-      listTransactions: widget.listTransactions,
-    );
-
+    // store.getValueTransactions(
+    //   listTransactions: widget.listTransactions,
+    // );
     SizeConst().init(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,14 +36,14 @@ class _RowBoxMoneyState extends ModularState<RowBoxMoney, RowBoxMoneyStore> {
           icon: EvaIcons.arrowIosUpward,
           title: "Ganhos",
           symbolCoin: widget.symbolCoin,
-          value: store.earningsAmount,
+          value: widget.gainsMonth,
           color: DarkColorsConst.ganhos,
         ),
         BoxMoneyWidget(
           icon: EvaIcons.arrowIosDownward,
           title: "Despesas",
           symbolCoin: widget.symbolCoin,
-          value: store.expenseAmount,
+          value: widget.expensesMonth,
           color: DarkColorsConst.despesas,
         ),
       ],

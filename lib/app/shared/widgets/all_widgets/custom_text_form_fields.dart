@@ -11,6 +11,7 @@ class CustomTextFormFields extends StatelessWidget {
   final TextAlign textAlign;
   final double hintFontsize;
   final bool? enable;
+  final bool hasMargin;
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
 
@@ -19,6 +20,7 @@ class CustomTextFormFields extends StatelessWidget {
     this.labelText,
     this.enable,
     this.obscureText = false,
+    this.hasMargin = false,
     this.maxLength,
     this.inputFormatters,
     this.textAlign = TextAlign.left,
@@ -33,6 +35,8 @@ class CustomTextFormFields extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
         top: SizeConst.paddingVertical * 0.6,
+        left: hasMargin ? SizeConst.paddingHorizontal : 0,
+        right: hasMargin ? SizeConst.paddingHorizontal : 0,
       ),
       child: TextFormField(
         textAlign: textAlign,

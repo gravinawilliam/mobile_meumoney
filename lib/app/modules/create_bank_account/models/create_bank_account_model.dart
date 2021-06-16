@@ -5,7 +5,7 @@ class CreateBankAccountModel {
   double balance;
   String cardHolderName;
   String bankId;
-  int montValidity;
+  int monthValidity;
   int yearValidity;
   String symbolCoin;
 
@@ -14,7 +14,7 @@ class CreateBankAccountModel {
     required this.balance,
     required this.cardHolderName,
     required this.bankId,
-    required this.montValidity,
+    required this.monthValidity,
     required this.yearValidity,
     required this.symbolCoin,
   });
@@ -24,7 +24,7 @@ class CreateBankAccountModel {
         'balance': balance,
         'cardHolderName': cardHolderName,
         'bankId': bankId,
-        'montValidity': montValidity,
+        'monthValidity': monthValidity,
         'yearValidity': yearValidity,
         'symbolCoin': symbolCoin,
       };
@@ -35,7 +35,7 @@ class CreateBankAccountModel {
         balance: map['balance'],
         cardHolderName: map['cardHolderName'],
         bankId: map['bankId'],
-        montValidity: map['montValidity'],
+        monthValidity: map['monthValidity'],
         yearValidity: map['yearValidity'],
         symbolCoin: map['symbolCoin'],
       );

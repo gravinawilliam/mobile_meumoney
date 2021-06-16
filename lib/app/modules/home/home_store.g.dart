@@ -7,7 +7,7 @@ part of 'home_store.dart';
 // **************************************************************************
 
 final $HomeStore = BindInject(
-  (i) => HomeStore(),
+  (i) => HomeStore(i<IHomeRepository>()),
   isSingleton: false,
   isLazy: true,
 );
@@ -31,6 +31,36 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   set user(UserModel value) {
     _$userAtom.reportWrite(value, super.user, () {
       super.user = value;
+    });
+  }
+
+  final _$gainsMonthAtom = Atom(name: '_HomeStoreBase.gainsMonth');
+
+  @override
+  double get gainsMonth {
+    _$gainsMonthAtom.reportRead();
+    return super.gainsMonth;
+  }
+
+  @override
+  set gainsMonth(double value) {
+    _$gainsMonthAtom.reportWrite(value, super.gainsMonth, () {
+      super.gainsMonth = value;
+    });
+  }
+
+  final _$expensesMonthAtom = Atom(name: '_HomeStoreBase.expensesMonth');
+
+  @override
+  double get expensesMonth {
+    _$expensesMonthAtom.reportRead();
+    return super.expensesMonth;
+  }
+
+  @override
+  set expensesMonth(double value) {
+    _$expensesMonthAtom.reportWrite(value, super.expensesMonth, () {
+      super.expensesMonth = value;
     });
   }
 
@@ -64,6 +94,14 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$getGainsExpensesAsyncAction =
+      AsyncAction('_HomeStoreBase.getGainsExpenses');
+
+  @override
+  Future getGainsExpenses() {
+    return _$getGainsExpensesAsyncAction.run(() => super.getGainsExpenses());
+  }
+
   final _$_HomeStoreBaseActionController =
       ActionController(name: '_HomeStoreBase');
 
@@ -82,6 +120,8 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   String toString() {
     return '''
 user: ${user},
+gainsMonth: ${gainsMonth},
+expensesMonth: ${expensesMonth},
 bankAccouts: ${bankAccouts},
 valuesVisible: ${valuesVisible}
     ''';

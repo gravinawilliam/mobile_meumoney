@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constants/constants.dart';
@@ -58,9 +57,11 @@ class _CreditCardWidgetState
                 Container(
                   height: 40,
                   width: widget.sizeWidthCard * 0.16,
-                  child: SvgPicture.network(
-                    widget.bankAccount.bank.logoUrl,
-                  ),
+                  child: widget.bankAccount.bank.logoUrl != ''
+                      ? SvgPicture.network(
+                          widget.bankAccount.bank.logoUrl,
+                        )
+                      : Container(),
                 ),
                 Container(
                   height: 40,

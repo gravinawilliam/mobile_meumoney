@@ -35,7 +35,7 @@ class CardAddAccount extends StatelessWidget {
               EvaIcons.plusSquareOutline,
             ),
             onPressed: () => Modular.to.pushNamed(
-              AppRoutersConst.createEditBankAccount,
+              AppRoutersConst.createBankAccount,
             ),
           ),
           Text(

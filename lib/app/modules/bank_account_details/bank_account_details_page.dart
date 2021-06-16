@@ -32,7 +32,7 @@ class BankAccountDetailsPageState
         actions: [
           IconButton(
             onPressed: () => Modular.to.pushNamed(
-              AppRoutersConst.createEditBankAccount,
+              AppRoutersConst.editBankAccount,
               arguments: widget.bankAccount,
             ),
             icon: Icon(

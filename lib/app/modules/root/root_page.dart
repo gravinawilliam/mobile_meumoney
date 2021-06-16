@@ -51,11 +51,8 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
                 EvaIcons.creditCard,
                 color: Colors.transparent,
               ),
-              leading: Align(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.credit_card,
-                ),
+              leading: Icon(
+                Icons.credit_card,
               ),
               title: Text(
                 'Adicionar nova conta de banco',
@@ -65,7 +62,7 @@ class _RootPageState extends ModularState<RootPage, RootStore> {
                 ),
               ),
               onPressed: () => Modular.to.pushNamed(
-                AppRoutersConst.createEditBankAccount,
+                AppRoutersConst.createBankAccount,
               ),
             ),
           ],

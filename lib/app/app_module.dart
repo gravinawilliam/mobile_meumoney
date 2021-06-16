@@ -1,18 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/modules/root/root_store.dart';
 
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
 import 'modules/authenticate_register/repositories/authenticate_repository.dart';
 import 'modules/bank_account_details/bank_account_details_module.dart';
-import 'modules/create_edit_bank_account/create_edit_bank_account_module.dart';
-import 'modules/create_edit_bank_account/create_edit_bank_account_store.dart';
-import 'modules/create_edit_bank_account/repositories/create_edit_bank_account_repository.dart';
+import 'modules/create_bank_account/create_bank_account_module.dart';
+import 'modules/create_bank_account/repositories/create_bank_account_repository.dart';
 import 'modules/create_transaction/create_transaction_module.dart';
 import 'modules/create_transaction/create_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content_transaction_store.dart';
+import 'modules/edit_bank_account/edit_bank_account_module.dart';
 import 'modules/home/home_store.dart';
+import 'modules/home/repositories/home_repository.dart';
 import 'modules/profile/profile_store.dart';
 import 'modules/root/root_module.dart';
 import 'modules/splash/repositories/splash_repository.dart';
@@ -29,8 +31,9 @@ import 'shared/widgets/all_widgets/slide_cards/slide_cards_store.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    $CreateEditAccountRepository,
-    $CreateEditBankAccountStore,
+    $RootStore,
+    $HomeRepository,
+    $CreateBankAccountRepository,
     $ListCategoriesTransactionStore,
     $TabBarContentTransactionStore,
     $CreateTransactionStore,
@@ -68,8 +71,12 @@ class AppModule extends Module {
       module: CreateTransactionModule(),
     ),
     ModuleRoute(
-      AppRoutersConst.createEditBankAccount,
-      module: CreateEditBankAccountModule(),
+      AppRoutersConst.createBankAccount,
+      module: CreateBankAccountModule(),
+    ),
+    ModuleRoute(
+      AppRoutersConst.editBankAccount,
+      module: EditBankAccountModule(),
     ),
     ModuleRoute(
       AppRoutersConst.bankAccountDetails,
