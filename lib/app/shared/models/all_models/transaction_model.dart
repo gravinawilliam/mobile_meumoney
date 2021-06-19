@@ -38,19 +38,21 @@ class TransactionModel {
         'toBankAccountId': toBankAccountId,
       };
 
-  factory TransactionModel.fromMap(Map<String, dynamic> map) =>
-      TransactionModel(
-        id: map['id'],
-        value: map['value'],
-        transactionType: map['transactionType'],
-        title: map['title'],
-        note: map['note'],
-        date: map['date'],
-        symbolCoin: map['symbolCoin'],
-        userId: map['userId'],
-        fromBankAccountId: map['fromBankAccountId'],
-        toBankAccountId: map['toBankAccountId'],
-      );
+  factory TransactionModel.fromMap(Map<String, dynamic> map) {
+    var valueTransaction = map['value'];
+    return TransactionModel(
+      id: map['id'],
+      value: valueTransaction.toDouble(),
+      transactionType: map['transactionType'],
+      title: map['title'],
+      note: map['note'],
+      date: map['date'],
+      symbolCoin: map['symbolCoin'],
+      userId: map['userId'],
+      fromBankAccountId: map['fromBankAccountId'],
+      toBankAccountId: map['toBankAccountId'],
+    );
+  }
 
   String toJson() => json.encode(toMap());
 

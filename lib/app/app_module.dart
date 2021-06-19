@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/modules/create_transaction/repositories/create_transaction_repository.dart';
+import 'package:mobile_meumoney/app/modules/transactions/transactions_store.dart';
 
 import 'modules/authenticate_register/authenticate_register_module.dart';
 import 'modules/authenticate_register/authenticate_register_store.dart';
@@ -10,7 +12,6 @@ import 'modules/create_bank_account/repositories/create_bank_account_repository.
 import 'modules/create_transaction/create_transaction_module.dart';
 import 'modules/create_transaction/create_transaction_store.dart';
 import 'modules/create_transaction/widgets/all_widgets/list_categories_transaction/list_categories_transaction_store.dart';
-import 'modules/create_transaction/widgets/all_widgets/tab_bar_content_transaction/tab_bar_content_transaction_store.dart';
 import 'modules/edit_bank_account/edit_bank_account_module.dart';
 import 'modules/edit_bank_account/edit_bank_account_store.dart';
 import 'modules/edit_bank_account/repositories/edit_bank_account_repository.dart';
@@ -37,9 +38,9 @@ class AppModule extends Module {
     $EditBankAccountStore,
     $RootStore,
     $HomeRepository,
+    $CreateTransactionRepository,
     $CreateBankAccountRepository,
     $ListCategoriesTransactionStore,
-    $TabBarContentTransactionStore,
     $CreateTransactionStore,
     $SplashRepository,
     $HomeStore,
@@ -53,6 +54,7 @@ class AppModule extends Module {
     $SlideCardsStore,
     $TransactionsRepository,
     $UserService,
+    $TransactionsStore,
     Bind((i) => Dio()),
   ];
 

@@ -40,6 +40,7 @@ class HomeRepository implements IHomeRepository {
   @override
   Future<List<ExchangeModel>> getExchanges() async {
     try {
+      _dio.options.headers["Authorization"] = "Bearer ${UserModel.token}";
       var response = await _dio.get(
         ApiRoutersConst.getCoins,
       );
@@ -52,6 +53,30 @@ class HomeRepository implements IHomeRepository {
     } on DioError catch (error) {
       print(error);
       return <ExchangeModel>[];
+    }
+  }
+
+  @override
+  Future<List<TransactionModel>> getTransactions() async {
+    try {
+      _dio.options.headers["Authorization"] = "Bearer ${UserModel.token}";
+      var response = await _dio.get(
+        ApiRoutersConst.getTransactionsByMonth,
+        queryParameters: {
+          "bankAccountId": "0438ed09-59b2-4044-a47d-5c38bdecafa2",
+          "month": "06",
+          "year": "2021"
+        },
+      );
+      var result = (response.data as List)
+          .map(
+            (e) => TransactionModel.fromMap(e),
+          )
+          .toList();
+      return result;
+    } on DioError catch (error) {
+      print(error);
+      return <TransactionModel>[];
     }
   }
 }

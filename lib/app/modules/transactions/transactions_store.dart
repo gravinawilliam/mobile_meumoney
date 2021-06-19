@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobile_meumoney/app/shared/models/all_models/user_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:table_calendar/table_calendar.dart';
 

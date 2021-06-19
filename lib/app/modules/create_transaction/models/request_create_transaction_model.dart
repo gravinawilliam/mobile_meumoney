@@ -8,6 +8,7 @@ class RequestCreateTransactionModel {
   String date;
   String symbolCoin;
   String fromBankAccount;
+
   RequestCreateTransactionModel({
     required this.note,
     required this.title,

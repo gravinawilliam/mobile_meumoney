@@ -11,4 +11,7 @@ class ApiRoutersConst {
       '$_baseUrl/transactions/getValueGainExpense';
   static const String getCoins = '$_baseUrl/coins';
   static const String createTransaction = '$_baseUrl/transactions';
+  static const String getNotificationBenford = '$_baseUrl/notifications';
+  static const String getTransactionsByMonth =
+      '$_baseUrl/transactions/getTransactionsByMonthYear';
 }

@@ -19,6 +19,7 @@ abstract class _HomeStoreBase with Store {
   ) {
     getGainsExpenses();
     getExchanges();
+    getTransactions();
   }
 
   @observable
@@ -39,6 +40,9 @@ abstract class _HomeStoreBase with Store {
   @observable
   List<ExchangeModel> exchangesList = ObservableList<ExchangeModel>();
 
+  @observable
+  List<TransactionModel> transactionsList = ObservableList<TransactionModel>();
+
   @action
   void exchangeVisibility() => valuesVisible = !valuesVisible;
 
@@ -54,6 +58,12 @@ abstract class _HomeStoreBase with Store {
     List<ExchangeModel> response = await repository.getExchanges();
     print(response);
     exchangesList = response;
+  }
+
+  @action
+  getTransactions() async {
+    List<TransactionModel> response = await repository.getTransactions();
+    transactionsList = response;
   }
 
   @action

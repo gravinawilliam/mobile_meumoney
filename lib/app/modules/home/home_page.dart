@@ -17,22 +17,21 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
   Widget build(BuildContext context) {
     List months = [
-      'jan',
-      'feb',
-      'mar',
-      'apr',
-      'may',
-      'jun',
-      'jul',
-      'aug',
-      'sep',
-      'oct',
-      'nov',
-      'dec'
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro'
     ];
     var now = DateTime.now();
     var currentMon = now.month;
-    print(months[currentMon - 1]);
     SizeConst().init(context);
     return Scaffold(
       body: Observer(
@@ -58,8 +57,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   ),
                   RowBoxMoney(
                     symbolCoin: "BRL",
-                    expensesMonth: store.expensesMonth,
-                    gainsMonth: store.gainsMonth,
+                    transactionsList: store.transactionsList,
                   ),
                 ],
               ),
@@ -138,10 +136,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 }
               },
             ),
-            SubtitleWidget(
-              subTitle: "Transações",
-              alignment: Alignment.topLeft,
-            ),
+            // SubtitleWidget(
+            //   subTitle: "Transações",
+            //   alignment: Alignment.topLeft,
+            // ),
           ],
         ),
       ),

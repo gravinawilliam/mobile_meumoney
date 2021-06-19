@@ -109,6 +109,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$transactionsListAtom = Atom(name: '_HomeStoreBase.transactionsList');
+
+  @override
+  List<TransactionModel> get transactionsList {
+    _$transactionsListAtom.reportRead();
+    return super.transactionsList;
+  }
+
+  @override
+  set transactionsList(List<TransactionModel> value) {
+    _$transactionsListAtom.reportWrite(value, super.transactionsList, () {
+      super.transactionsList = value;
+    });
+  }
+
   final _$getGainsExpensesAsyncAction =
       AsyncAction('_HomeStoreBase.getGainsExpenses');
 
@@ -122,6 +137,14 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   @override
   Future getExchanges() {
     return _$getExchangesAsyncAction.run(() => super.getExchanges());
+  }
+
+  final _$getTransactionsAsyncAction =
+      AsyncAction('_HomeStoreBase.getTransactions');
+
+  @override
+  Future getTransactions() {
+    return _$getTransactionsAsyncAction.run(() => super.getTransactions());
   }
 
   final _$_HomeStoreBaseActionController =
@@ -157,7 +180,8 @@ gainsMonth: ${gainsMonth},
 expensesMonth: ${expensesMonth},
 bankAccouts: ${bankAccouts},
 valuesVisible: ${valuesVisible},
-exchangesList: ${exchangesList}
+exchangesList: ${exchangesList},
+transactionsList: ${transactionsList}
     ''';
   }
 }

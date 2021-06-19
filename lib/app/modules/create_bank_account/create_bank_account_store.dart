@@ -154,7 +154,7 @@ abstract class _CreateBankAccountStoreBase with Store {
           btnController.success();
           UserModel.bankAccounts!.add(response);
           Modular.to.pop();
-          Modular.to.pushReplacementNamed(AppRoutersConst.root);
+          Modular.to.pop();
         },
       );
     } catch (error) {
