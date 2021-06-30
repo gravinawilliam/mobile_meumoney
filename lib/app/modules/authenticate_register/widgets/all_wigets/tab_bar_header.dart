@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../shared/constants/constants.dart';
@@ -21,30 +20,28 @@ class _TabBarHeaderState
     SizeConst().init(context);
     return Column(
       children: [
-        Observer(
-          builder: (_) => Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ButtonTab(
-                onTap: () {
-                  setState(() {
-                    indexedStack = 0;
-                  });
-                },
-                isSelect: indexedStack == 0 ? true : false,
-                title: "login",
-              ),
-              ButtonTab(
-                onTap: () {
-                  setState(() {
-                    indexedStack = 1;
-                  });
-                },
-                isSelect: indexedStack == 1 ? true : false,
-                title: "cadastro",
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ButtonTab(
+              onTap: () {
+                setState(() {
+                  indexedStack = 0;
+                });
+              },
+              isSelect: indexedStack == 0 ? true : false,
+              title: "login",
+            ),
+            ButtonTab(
+              onTap: () {
+                setState(() {
+                  indexedStack = 1;
+                });
+              },
+              isSelect: indexedStack == 1 ? true : false,
+              title: "cadastro",
+            ),
+          ],
         ),
         IndexedStack(
           index: indexedStack,

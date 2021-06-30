@@ -7,7 +7,7 @@ part of 'home_store.dart';
 // **************************************************************************
 
 final $HomeStore = BindInject(
-  (i) => HomeStore(i<IHomeRepository>()),
+  (i) => HomeStore(i<IHomeRepository>(), i<IMoneyService>()),
   isSingleton: false,
   isLazy: true,
 );
@@ -19,6 +19,36 @@ final $HomeStore = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeStore on _HomeStoreBase, Store {
+  final _$currentMonthAtom = Atom(name: '_HomeStoreBase.currentMonth');
+
+  @override
+  int get currentMonth {
+    _$currentMonthAtom.reportRead();
+    return super.currentMonth;
+  }
+
+  @override
+  set currentMonth(int value) {
+    _$currentMonthAtom.reportWrite(value, super.currentMonth, () {
+      super.currentMonth = value;
+    });
+  }
+
+  final _$currentYearAtom = Atom(name: '_HomeStoreBase.currentYear');
+
+  @override
+  int get currentYear {
+    _$currentYearAtom.reportRead();
+    return super.currentYear;
+  }
+
+  @override
+  set currentYear(int value) {
+    _$currentYearAtom.reportWrite(value, super.currentYear, () {
+      super.currentYear = value;
+    });
+  }
+
   final _$userAtom = Atom(name: '_HomeStoreBase.user');
 
   @override
@@ -124,14 +154,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  final _$getGainsExpensesAsyncAction =
-      AsyncAction('_HomeStoreBase.getGainsExpenses');
-
-  @override
-  Future getGainsExpenses() {
-    return _$getGainsExpensesAsyncAction.run(() => super.getGainsExpenses());
-  }
-
   final _$getExchangesAsyncAction = AsyncAction('_HomeStoreBase.getExchanges');
 
   @override
@@ -149,6 +171,17 @@ mixin _$HomeStore on _HomeStoreBase, Store {
 
   final _$_HomeStoreBaseActionController =
       ActionController(name: '_HomeStoreBase');
+
+  @override
+  String getbalance({required double balance, required String symbolCoin}) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.getbalance');
+    try {
+      return super.getbalance(balance: balance, symbolCoin: symbolCoin);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void exchangeVisibility() {
@@ -175,6 +208,8 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   @override
   String toString() {
     return '''
+currentMonth: ${currentMonth},
+currentYear: ${currentYear},
 user: ${user},
 gainsMonth: ${gainsMonth},
 expensesMonth: ${expensesMonth},

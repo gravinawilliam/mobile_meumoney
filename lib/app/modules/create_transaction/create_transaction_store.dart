@@ -2,13 +2,13 @@ import 'package:asuka/asuka.dart' as asuka;
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/all_models/notification_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
 
 import '../../shared/constants/constants.dart';
 import '../../shared/errors/errors.dart';
+import '../../shared/models/all_models/notification_model.dart';
 import '../../shared/models/models.dart';
 import 'interfaces/create_transaction_repository_interface.dart';
 import 'models/request_create_transaction_model.dart';

@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import '../../../../shared/constants/constants.dart';
 import '../../../../shared/models/models.dart';
 import '../../../../shared/widgets/widgets_globais.dart';
+import '../../transactions_store.dart';
 import '../transaction_widgets.dart';
 
 class TransactionItem extends StatelessWidget {
   final TransactionModel transaction;
+  final TransactionsStore store;
   final int index;
   final int length;
 
   const TransactionItem({
     required this.transaction,
+    required this.store,
     required this.index,
     required this.length,
   });
@@ -49,13 +52,12 @@ class TransactionItem extends StatelessWidget {
               title: Text(
                 "Apagar",
               ),
-              onPressed: () {},
-            ),
-            BottomSheetAction(
-              title: Text(
-                "Editar",
+              onPressed: () => store.deleteTransaction(
+                transanctionId: transaction.id,
+                date:
+                    // ignore: lines_longer_than_80_chars
+                    '${store.selectedDay.year}-${store.selectedDay.month}-${store.selectedDay.day}',
               ),
-              onPressed: () {},
             ),
           ],
         ),

@@ -100,6 +100,7 @@ class TransactionsPageState
                             : store.transactionsList!.length,
                         index: index,
                         transaction: transaction,
+                        store: store,
                       );
                     },
                   );

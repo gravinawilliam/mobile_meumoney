@@ -11,6 +11,7 @@ class BoxMoneyWidget extends StatefulWidget {
   final double value;
   final String symbolCoin;
   final IconData icon;
+  final bool valuesVisible;
 
   const BoxMoneyWidget({
     required this.color,
@@ -18,6 +19,7 @@ class BoxMoneyWidget extends StatefulWidget {
     required this.value,
     required this.symbolCoin,
     required this.icon,
+    required this.valuesVisible,
   });
   @override
   _BoxMoneyWidgetState createState() => _BoxMoneyWidgetState();
@@ -56,10 +58,12 @@ class _BoxMoneyWidgetState extends ModularState<BoxMoneyWidget, BoxMoneyStore> {
             ],
           ),
           AutoSizeText(
-            controller.getbalance(
-              balance: widget.value,
-              symbolCoin: widget.symbolCoin,
-            ),
+            widget.valuesVisible
+                ? controller.getbalance(
+                    balance: widget.value,
+                    symbolCoin: widget.symbolCoin,
+                  )
+                : "XX,XX",
             style: TextStyle(
               fontSize: 15,
               color: DarkColorsConst.textSecundary,

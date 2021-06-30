@@ -57,16 +57,15 @@ class HomeRepository implements IHomeRepository {
   }
 
   @override
-  Future<List<TransactionModel>> getTransactions() async {
+  Future<List<TransactionModel>> getTransactionsByMonthYear({
+    required int month,
+    required int year,
+  }) async {
     try {
       _dio.options.headers["Authorization"] = "Bearer ${UserModel.token}";
       var response = await _dio.get(
         ApiRoutersConst.getTransactionsByMonth,
-        queryParameters: {
-          "bankAccountId": "0438ed09-59b2-4044-a47d-5c38bdecafa2",
-          "month": "06",
-          "year": "2021"
-        },
+        queryParameters: {"month": month.toString(), "year": year.toString()},
       );
       var result = (response.data as List)
           .map(

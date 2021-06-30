@@ -1,12 +1,14 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../shared/constants/constants.dart';
 import '../../shared/widgets/all_widgets/row_box_money/row_box_money_widget.dart';
 import '../../shared/widgets/all_widgets/subtitle_widget.dart';
+import '../../shared/widgets/all_widgets/title_widget.dart';
 import '../../shared/widgets/widgets_globais.dart';
 import 'home_store.dart';
-import 'widgets/home_widgets.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,30 +18,34 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
   Widget build(BuildContext context) {
-    List months = [
-      'Janeiro',
-      'Fevereiro',
-      'Março',
-      'Abril',
-      'Maio',
-      'Junho',
-      'Julho',
-      'Agosto',
-      'Setembro',
-      'Outubro',
-      'Novembro',
-      'Dezembro'
-    ];
-    var now = DateTime.now();
-    var currentMon = now.month;
     SizeConst().init(context);
     return Scaffold(
       body: Observer(
         builder: (_) => ScrollBody(
           hasMargin: false,
           children: [
-            HeaderHome(
-              user: store.user,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: SizeConst.paddingHorizontal,
+                vertical: SizeConst.paddingVertical,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TitleWidget(
+                    title: store.user.name,
+                  ),
+                  Observer(
+                    builder: (_) => IconButton(
+                      icon: Icon(
+                        store.valuesVisible ? EvaIcons.eye : EvaIcons.eyeOff,
+                        size: 30,
+                      ),
+                      onPressed: () => store.exchangeVisibility(),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SlideCardsWidget(
               valuesVisible: store.valuesVisible,
@@ -52,12 +58,13 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   SubtitleWidget(
                     hasMarginHorizontal: false,
                     alignment: Alignment.center,
-                    subTitle: "${months[currentMon - 1]} de 2021",
+                    subTitle: "${store.months[store.currentMonth - 1]} de 2021",
                     fontSize: 16,
                   ),
                   RowBoxMoney(
                     symbolCoin: "BRL",
                     transactionsList: store.transactionsList,
+                    valuesVisible: store.valuesVisible,
                   ),
                 ],
               ),
@@ -83,51 +90,50 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                       itemBuilder: (context, index) {
                         var exchange = store.exchangesList[index];
                         store.setSymbolCoin(index);
-                        return Observer(
-                          builder: (_) => Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(
-                              left:
-                                  index == 0 ? SizeConst.paddingHorizontal : 0,
-                              right: SizeConst.paddingHorizontal,
+                        return Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(
+                            left: index == 0 ? SizeConst.paddingHorizontal : 0,
+                            right: SizeConst.paddingHorizontal,
+                          ),
+                          width: SizeConst.screenWidth * 0.3,
+                          decoration: BoxDecoration(
+                            color: DarkColorsConst.bottomBarUnselectedItemColor,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.grey.withOpacity(0.3),
                             ),
-                            width: SizeConst.screenWidth * 0.3,
-                            decoration: BoxDecoration(
-                              color:
-                                  DarkColorsConst.bottomBarUnselectedItemColor,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: Colors.grey.withOpacity(0.3),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                exchange.name,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: FontsConst.regular,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  exchange.name,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: FontsConst.regular,
-                                  ),
-                                  textAlign: TextAlign.center,
+                              Text(
+                                "${exchange.symbol} 1",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: FontsConst.regular,
                                 ),
-                                Text(
-                                  "${exchange.symbol} 1",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: FontsConst.regular,
-                                  ),
+                              ),
+                              Text(
+                                store.getbalance(
+                                  balance: exchange.buy,
+                                  symbolCoin: 'BRL',
                                 ),
-                                Text(
-                                  "R\$ ${exchange.buy.toString()}",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: FontsConst.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: FontsConst.bold,
                                 ),
-                              ],
-                            ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         );
                       },
@@ -136,10 +142,6 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 }
               },
             ),
-            // SubtitleWidget(
-            //   subTitle: "Transações",
-            //   alignment: Alignment.topLeft,
-            // ),
           ],
         ),
       ),

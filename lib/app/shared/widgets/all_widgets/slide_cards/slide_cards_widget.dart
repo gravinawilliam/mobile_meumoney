@@ -19,7 +19,7 @@ class SlideCardsWidget extends StatefulWidget {
     required this.bankAccouts,
     this.hasMarginTop = false,
     this.hasOnTap = false,
-    this.valuesVisible = true,
+    required this.valuesVisible,
   });
 
   @override
@@ -33,59 +33,65 @@ class _SlideCardsWidgetState
     SizeConst().init(context);
     var sizeHeightCard = SizeConst.screenWidth * 0.43;
     return widget.bankAccouts!.isEmpty
-        ? CardAddAccount(
-            sizeHeightCard: sizeHeightCard,
+        ? Observer(
+            builder: (_) => CardAddAccount(
+              sizeHeightCard: sizeHeightCard,
+            ),
           )
         : widget.bankAccouts!.length == 1
-            ? Container(
-                alignment: Alignment.center,
-                height: sizeHeightCard,
-                margin: EdgeInsets.only(
-                  top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
-                ),
-                child: Observer(
-                  builder: (_) => CreditCardWidget(
-                    sizeWidthCard: SizeConst.screenWidth -
-                        (3 * SizeConst.paddingHorizontal),
-                    bankAccount: widget.bankAccouts![0],
-                    sizeHeightCard: sizeHeightCard,
-                    valuesVisible: widget.valuesVisible,
+            ? Observer(
+                builder: (_) => Container(
+                      alignment: Alignment.center,
+                      height: sizeHeightCard,
+                      margin: EdgeInsets.only(
+                        top:
+                            widget.hasMarginTop ? SizeConst.paddingVertical : 0,
+                      ),
+                      child: Observer(
+                        builder: (_) => CreditCardWidget(
+                          sizeWidthCard: SizeConst.screenWidth -
+                              (3 * SizeConst.paddingHorizontal),
+                          bankAccount: widget.bankAccouts![0],
+                          sizeHeightCard: sizeHeightCard,
+                          valuesVisible: widget.valuesVisible,
+                        ),
+                      ),
+                    ))
+            : Observer(
+                builder: (_) => Container(
+                  height: sizeHeightCard,
+                  margin: EdgeInsets.only(
+                    top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
                   ),
-                ),
-              )
-            : Container(
-                height: sizeHeightCard,
-                margin: EdgeInsets.only(
-                  top: widget.hasMarginTop ? SizeConst.paddingVertical : 0,
-                ),
-                child: CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: SizeConst.screenHeight,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
-                    onPageChanged: (index, reason) => store.changedCard(
-                      index: index,
+                  child: CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: SizeConst.screenHeight,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                      onPageChanged: (index, reason) => store.changedCard(
+                        index: index,
+                      ),
                     ),
+                    itemCount: widget.bankAccouts!.length,
+                    itemBuilder: (context, index, int) {
+                      var bankAccountModel = widget.bankAccouts![index];
+                      return GestureDetector(
+                        onTap: () => Modular.to.pushNamed(
+                          AppRoutersConst.bankAccountDetails,
+                          arguments: bankAccountModel,
+                        ),
+                        child: CreditCardWidget(
+                          sizeWidthCard: SizeConst.screenWidth -
+                              (3 * SizeConst.paddingHorizontal),
+                          bankAccount: bankAccountModel,
+                          sizeHeightCard: sizeHeightCard,
+                          valuesVisible: widget.valuesVisible,
+                        ),
+                      );
+                    },
                   ),
-                  itemCount: widget.bankAccouts!.length,
-                  itemBuilder: (context, index, int) {
-                    var bankAccountModel = widget.bankAccouts![index];
-                    return GestureDetector(
-                      onTap: () => Modular.to.pushNamed(
-                        AppRoutersConst.bankAccountDetails,
-                        arguments: bankAccountModel,
-                      ),
-                      child: CreditCardWidget(
-                        sizeWidthCard: SizeConst.screenWidth -
-                            (3 * SizeConst.paddingHorizontal),
-                        bankAccount: bankAccountModel,
-                        sizeHeightCard: sizeHeightCard,
-                        valuesVisible: widget.valuesVisible,
-                      ),
-                    );
-                  },
                 ),
               );
   }

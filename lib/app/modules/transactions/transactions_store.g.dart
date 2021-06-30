@@ -74,6 +74,16 @@ mixin _$TransactionsStore on _TransactionsStoreBase, Store {
         .run(() => super.getTransactions(date: date));
   }
 
+  final _$deleteTransactionAsyncAction =
+      AsyncAction('_TransactionsStoreBase.deleteTransaction');
+
+  @override
+  Future deleteTransaction(
+      {required String transanctionId, required String date}) {
+    return _$deleteTransactionAsyncAction.run(() =>
+        super.deleteTransaction(transanctionId: transanctionId, date: date));
+  }
+
   final _$_TransactionsStoreBaseActionController =
       ActionController(name: '_TransactionsStoreBase');
 

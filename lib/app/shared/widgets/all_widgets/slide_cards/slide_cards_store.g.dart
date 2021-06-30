@@ -7,7 +7,7 @@ part of 'slide_cards_store.dart';
 // **************************************************************************
 
 final $SlideCardsStore = BindInject(
-  (i) => SlideCardsStore(),
+  (i) => SlideCardsStore(i<HomeStore>()),
   isSingleton: false,
   isLazy: true,
 );
@@ -35,18 +35,12 @@ mixin _$SlideCardsStore on _SlideCardsStoreBase, Store {
     });
   }
 
-  final _$_SlideCardsStoreBaseActionController =
-      ActionController(name: '_SlideCardsStoreBase');
+  final _$changedCardAsyncAction =
+      AsyncAction('_SlideCardsStoreBase.changedCard');
 
   @override
-  void changedCard({required int index}) {
-    final _$actionInfo = _$_SlideCardsStoreBaseActionController.startAction(
-        name: '_SlideCardsStoreBase.changedCard');
-    try {
-      return super.changedCard(index: index);
-    } finally {
-      _$_SlideCardsStoreBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> changedCard({required int index}) {
+    return _$changedCardAsyncAction.run(() => super.changedCard(index: index));
   }
 
   @override

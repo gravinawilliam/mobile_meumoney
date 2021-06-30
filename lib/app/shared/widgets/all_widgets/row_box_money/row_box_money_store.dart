@@ -21,15 +21,17 @@ abstract class _RowBoxMoneyStoreBase with Store {
   }) {
     earningsAmount = 0;
     expenseAmount = 0;
-    for (var index = 0; index < listTransactions.length; index++) {
-      switch (listTransactions[index].transactionType) {
-        case 'gain':
-          earningsAmount += listTransactions[index].value;
-          break;
-        case 'expense':
-          expenseAmount += listTransactions[index].value;
-          break;
-        default:
+    if (listTransactions.isNotEmpty) {
+      for (var index = 0; index < listTransactions.length; index++) {
+        switch (listTransactions[index].transactionType) {
+          case 'gain':
+            earningsAmount += listTransactions[index].value;
+            break;
+          case 'expense':
+            expenseAmount += listTransactions[index].value;
+            break;
+          default:
+        }
       }
     }
   }

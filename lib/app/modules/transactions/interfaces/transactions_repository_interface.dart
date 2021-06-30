@@ -8,4 +8,7 @@ abstract class ITransactionsRepository {
       getTransactionsByDateUserId({
     required String date,
   });
+  Future<bool> deleteTransaction({
+    required String transactionId,
+  });
 }

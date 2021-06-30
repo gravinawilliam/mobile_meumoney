@@ -14,4 +14,7 @@ class ApiRoutersConst {
   static const String getNotificationBenford = '$_baseUrl/notifications';
   static const String getTransactionsByMonth =
       '$_baseUrl/transactions/getTransactionsByMonthYear';
+  static const String getTransactionsByBankAccountId =
+      '$_baseUrl/transactions/listByBankAccount/';
+  static const String deleteTransaction = '$_baseUrl/transactions/';
 }

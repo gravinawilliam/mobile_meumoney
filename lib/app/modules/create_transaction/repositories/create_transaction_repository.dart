@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:mobile_meumoney/app/shared/models/all_models/notification_model.dart';
+
 import '../../../shared/constants/constants.dart';
 import '../../../shared/errors/errors.dart';
 import '../../../shared/models/models.dart';
-
 import '../interfaces/create_transaction_repository_interface.dart';
 import '../models/request_create_transaction_model.dart';
+
 part 'create_transaction_repository.g.dart';
 
 @Injectable()
@@ -55,9 +55,6 @@ class CreateTransactionRepository implements ICreateTransactionRepository {
       var response = await _dio.get(
         ApiRoutersConst.getNotificationBenford,
       );
-      if (response.data == null) {
-        return null;
-      }
       var result = NotificationModel.fromMap(response.data);
       return result;
     } on DioError catch (error) {

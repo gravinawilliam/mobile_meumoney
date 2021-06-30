@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../shared/interfaces/services/money_service_interface.dart';
 import '../../shared/models/all_models/exchange_model.dart';
 import '../../shared/models/models.dart';
 import 'interfaces/home_repository_interface.dart';
-import 'models/response_get_gains_expenses_model.dart';
 
 part 'home_store.g.dart';
 
@@ -14,13 +14,46 @@ class HomeStore = _HomeStoreBase with _$HomeStore;
 abstract class _HomeStoreBase with Store {
   final IHomeRepository repository;
 
+  final IMoneyService moneyService;
+
   _HomeStoreBase(
     this.repository,
+    this.moneyService,
   ) {
-    getGainsExpenses();
     getExchanges();
     getTransactions();
   }
+
+  @action
+  String getbalance({
+    required double balance,
+    required String symbolCoin,
+  }) =>
+      moneyService.formatNumber(
+        symbolCoin: symbolCoin,
+        value: balance,
+      );
+
+  List months = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+
+  @observable
+  var currentMonth = DateTime.now().month;
+
+  @observable
+  var currentYear = DateTime.now().year;
 
   @observable
   UserModel user = UserModel.user!;
@@ -47,22 +80,19 @@ abstract class _HomeStoreBase with Store {
   void exchangeVisibility() => valuesVisible = !valuesVisible;
 
   @action
-  getGainsExpenses() async {
-    ResponseGetGainsExpenseModel response = await repository.getGainsExpense();
-    gainsMonth = response.earningsAmount;
-    expensesMonth = response.expenseAmount;
-  }
-
-  @action
   getExchanges() async {
     List<ExchangeModel> response = await repository.getExchanges();
-    print(response);
     exchangesList = response;
   }
 
   @action
   getTransactions() async {
-    List<TransactionModel> response = await repository.getTransactions();
+    transactionsList = [];
+    List<TransactionModel> response =
+        await repository.getTransactionsByMonthYear(
+      month: currentMonth,
+      year: currentYear,
+    );
     transactionsList = response;
   }
 
